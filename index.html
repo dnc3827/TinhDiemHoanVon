@@ -11,7 +11,6 @@
 <meta name="apple-mobile-web-app-title" content="EZ F&B">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
-
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 :root{
@@ -24,8 +23,6 @@
   --purple:#6d28d9;--purple-bg:#f5f3ff;--purple-border:#c4b5fd;
   --border:#e2ddd5;--radius:14px;--shadow:0 2px 16px rgba(0,0,0,.07);
 }
-
-/* TOOLTIP */
 .tooltip-wrap{position:relative;display:inline-flex;align-items:center;gap:3px;cursor:help}
 .tooltip-wrap .tooltip-box{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1a1710;color:#fff;font-size:11px;line-height:1.5;padding:7px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s;z-index:99;font-weight:400;max-width:220px;white-space:normal;text-align:center}
 .tooltip-wrap:hover .tooltip-box{opacity:1}
@@ -35,7 +32,6 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 /* HEADER */
 .app-header{background:var(--ink);color:#fff;padding:28px 20px 22px;text-align:center;position:relative;overflow:hidden}
 .app-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 80% at 50% 120%,rgba(200,146,42,.22) 0%,transparent 70%);pointer-events:none}
-.header-badge{display:inline-block;background:rgba(200,146,42,.18);border:1px solid rgba(200,146,42,.35);color:#f0c060;font-size:10px;font-weight:600;letter-spacing:3px;text-transform:uppercase;padding:4px 14px;border-radius:100px;margin-bottom:12px;position:relative}
 .app-header h1{font-family:'Fraunces',serif;font-size:clamp(26px,5vw,40px);font-weight:900;line-height:1.1;position:relative;letter-spacing:-.5px}
 .app-header h1 em{font-style:italic;color:#f0c060}
 .app-header p{color:rgba(255,255,255,.5);font-size:13px;margin-top:6px;position:relative}
@@ -59,8 +55,6 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 
 /* MAIN */
 .main{max-width:720px;margin:0 auto;padding:24px 14px 80px}
-
-/* PANELS */
 .panel{display:none}
 .panel.active{display:block;animation:fadeUp .35s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
@@ -70,33 +64,30 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .card-title{font-family:'Fraunces',serif;font-size:17px;font-weight:700;color:var(--ink);margin-bottom:4px;display:flex;align-items:center;gap:8px}
 .card-desc{font-size:13px;color:var(--ink3);margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--border);line-height:1.6}
 
+/* HINT BOX — thay thế card-desc kỹ thuật */
+.hint-box{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:10px;padding:12px 14px;margin-bottom:16px;font-size:13px;color:var(--blue);line-height:1.6}
+.hint-box strong{display:block;margin-bottom:2px;font-weight:600}
+
 /* FIELDS */
 .field{margin-bottom:13px}
-.field label{display:block;font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
+.field label{display:block;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
 .field input,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:#faf9f7;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
 .field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,146,42,.1);background:#fff}
 .field .preview{font-size:12px;color:var(--gold);font-weight:600;margin-top:4px;min-height:16px}
-.field .hint{font-size:11px;color:var(--ink3);margin-top:3px;line-height:1.5}
+.field .hint{font-size:12px;color:var(--ink3);margin-top:4px;line-height:1.5;background:#faf9f7;padding:6px 10px;border-radius:7px;border-left:3px solid var(--gold-border)}
 .field input.err{border-color:var(--red)}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.field-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
 
 /* BREAKDOWN TABLES */
 .blist{display:flex;flex-direction:column;gap:8px}
 .brow{display:grid;grid-template-columns:1fr 130px 34px;gap:6px;align-items:center}
-
-/* P3 FIX: Thêm cột checkbox "thuê mặt bằng" vào brow-fc */
 .brow-fc{display:grid;grid-template-columns:1fr 70px 50px 100px 100px 32px 34px;gap:5px;align-items:center}
 .brow-fc input,.brow-fc select{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
 .brow-fc input:focus,.brow-fc select:focus{border-color:var(--gold);background:#fff}
 .brow-fc input[type=number]{text-align:right}
 .brow-fc input[readonly]{background:#f0f0f0;color:var(--ink3);cursor:default}
-
-/* Rent checkbox style */
 .rent-chk-wrap{display:flex;align-items:center;justify-content:center;height:36px}
 .rent-chk-wrap input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold);cursor:pointer;flex-shrink:0}
-.rent-chk-wrap title{font-size:10px;color:var(--ink3);white-space:nowrap}
-
 .brow input{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
 .brow input:focus{border-color:var(--gold);background:#fff}
 .brow input[type=number]{text-align:right}
@@ -105,13 +96,6 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .add-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px dashed var(--border);border-radius:9px;padding:9px 13px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink3);cursor:pointer;width:100%;margin-top:8px;transition:all .2s}
 .add-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-bg)}
 .sec-total{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:var(--gold-bg);border:1px solid var(--gold-border);border-radius:9px;margin-top:10px;font-size:13px;font-weight:600;color:var(--gold)}
-
-/* Updated header to include rent checkbox column */
-.brow-fc-header{display:grid;grid-template-columns:1fr 70px 50px 100px 100px 32px 34px;gap:5px;padding:0 0 4px;margin-bottom:2px;border-bottom:1px solid var(--border)}
-.brow-fc-header span{font-size:10px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;padding:0 4px;text-align:center}
-.brow-fc-header span:first-child{text-align:left}
-
-/* CAPEX with depreciation — P1 */
 .brow-capex{display:grid;grid-template-columns:1fr 120px 90px 90px 34px;gap:6px;align-items:center}
 .brow-capex input{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
 .brow-capex input:focus{border-color:var(--gold);background:#fff}
@@ -120,10 +104,12 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .brow-capex-header{display:grid;grid-template-columns:1fr 120px 90px 90px 34px;gap:6px;padding:0 0 4px;margin-bottom:2px;border-bottom:1px solid var(--border)}
 .brow-capex-header span{font-size:10px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;padding:0 4px;text-align:right}
 .brow-capex-header span:first-child{text-align:left}
+.brow-fc-header{display:grid;grid-template-columns:1fr 70px 50px 100px 100px 32px 34px;gap:5px;padding:0 0 4px;margin-bottom:2px;border-bottom:1px solid var(--border)}
+.brow-fc-header span{font-size:10px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;padding:0 4px;text-align:center}
+.brow-fc-header span:first-child{text-align:left}
 
-/* LOAN CARD — P2 */
+/* LOAN CARD */
 .loan-card{background:var(--purple-bg);border:1.5px solid var(--purple-border);border-radius:var(--radius);padding:18px;margin-bottom:14px}
-.loan-card .card-title{color:var(--purple)}
 .loan-toggle{display:flex;align-items:center;gap:10px;cursor:pointer;margin-bottom:0}
 .loan-toggle input[type=checkbox]{width:18px;height:18px;accent-color:var(--purple);cursor:pointer}
 .loan-toggle span{font-size:14px;font-weight:500;color:var(--ink2)}
@@ -134,7 +120,6 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 /* BUTTONS */
 .btn-primary{width:100%;padding:15px;background:var(--ink);color:#fff;border:none;border-radius:var(--radius);font-family:'Fraunces',serif;font-size:17px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:6px}
 .btn-primary:hover{background:#2e2b22;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
-.btn-primary:active{transform:translateY(0)}
 .btn-row{display:flex;gap:10px;margin-top:6px}
 .btn-back{flex:1;padding:12px;background:var(--surface);color:var(--ink2);border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
 .btn-back:hover{border-color:var(--ink);background:var(--ink);color:#fff}
@@ -144,7 +129,6 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .btn-print:hover{border-color:var(--ink);color:var(--ink)}
 .btn-reset{padding:11px 16px;background:var(--surface);color:var(--red);border:1.5px solid var(--red-border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s}
 .btn-reset:hover{background:var(--red-bg)}
-/* P5 — Share button */
 .btn-share{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:var(--green-bg);border:1.5px solid var(--green-border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--green);cursor:pointer;transition:all .2s;margin-top:8px}
 .btn-share:hover{background:var(--green);color:#fff;border-color:var(--green)}
 .share-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1710;color:#fff;padding:10px 20px;border-radius:100px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:999;white-space:nowrap}
@@ -167,6 +151,13 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .kpi-value.red{color:var(--red)}
 .kpi-value.purple{color:var(--purple)}
 .kpi-sub{font-size:11px;color:var(--ink3);margin-top:5px;line-height:1.4}
+
+/* KẾT QUẢ NỔI BẬT — 1 câu đọc ngay */
+.result-hero{background:var(--ink);color:#fff;border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;text-align:center}
+.result-hero-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:8px}
+.result-hero-number{font-family:'Fraunces',serif;font-size:clamp(32px,7vw,48px);font-weight:900;color:#f0c060;line-height:1;margin-bottom:6px}
+.result-hero-unit{font-size:14px;color:rgba(255,255,255,.6);margin-bottom:12px}
+.result-hero-explain{font-size:13px;color:rgba(255,255,255,.5);line-height:1.6}
 
 /* ADVICE BOX */
 .advice{border-radius:var(--radius);padding:18px;margin-bottom:14px;display:flex;gap:12px;border:1.5px solid transparent}
@@ -194,6 +185,12 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .table-scroll{overflow-x:auto;max-height:320px;overflow-y:auto;border:1px solid var(--border);border-radius:10px}
 .table-scroll .result-table th{position:sticky;top:0;background:#fff;z-index:1}
 
+/* XEM THÊM toggle */
+.see-more-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);cursor:pointer;transition:all .2s;margin-bottom:12px}
+.see-more-toggle:hover{border-color:var(--gold);color:var(--gold)}
+.see-more-content{display:none}
+.see-more-content.open{display:block}
+
 /* CHART */
 .chart-wrap{position:relative;height:220px}
 
@@ -220,10 +217,8 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
 .info-note{background:var(--blue-bg);border:1px solid var(--blue-border);border-radius:9px;padding:10px 13px;font-size:12px;color:var(--blue);margin-bottom:12px;line-height:1.6}
 
-/* P4 — SENSITIVITY ANALYSIS */
+/* SENSITIVITY */
 .sensitivity-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px 18px;margin-bottom:14px;box-shadow:var(--shadow)}
-.sensitivity-card .card-title{margin-bottom:4px}
-.sensitivity-card .card-desc{margin-bottom:14px}
 .slider-wrap{margin:14px 0}
 .slider-label{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
 .slider-label span{font-size:13px;font-weight:500;color:var(--ink2)}
@@ -239,7 +234,6 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .sens-kpi .sk-val.neg{color:var(--red)}
 .sens-kpi .sk-val.gold{color:var(--gold)}
 
-/* RESPONSIVE */
 @media(max-width:600px){
   .brow-capex{grid-template-columns:1fr 100px 80px 80px 34px}
   .brow-fc{grid-template-columns:1fr 55px 40px 80px 80px 28px 30px}
@@ -254,11 +248,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   .brow-fc{grid-template-columns:1fr 45px 36px 70px 70px 26px 28px}
   .brow-fc-header{grid-template-columns:1fr 45px 36px 70px 70px 26px 28px}
 }
-
-/* PRINT */
 @media print{
-  .app-header .header-badge,.module-selector,.stepper,.progress-wrap,.btn-row,.btn-primary,.btn-print,.btn-share,.btn-reset,.add-btn,.del-btn,.sensitivity-card{display:none!important}
+  .app-header .header-badge,.module-selector,.stepper,.progress-wrap,.btn-row,.btn-primary,.btn-print,.btn-share,.btn-reset,.add-btn,.del-btn,.sensitivity-card,.see-more-toggle{display:none!important}
   .panel{display:block!important}
+  .see-more-content{display:block!important}
   body{background:#fff}
   .card{box-shadow:none;border:1px solid #ddd}
   .summary-dark{background:#222!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -269,63 +262,62 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
 <div class="share-toast" id="shareToast">✅ Đã copy tóm tắt — paste vào Zalo/Messenger!</div>
 
-<!-- HEADER -->
 <div class="app-header">
   <h1>Tính <em>Hòa Vốn</em> F&amp;B</h1>
-  <p>Điểm hòa vốn · Thời gian hoàn vốn · Khấu hao · Lãi vay</p>
+  <p>Nhập số liệu · App tự tính · Biết ngay cần làm gì</p>
 </div>
 
-<!-- MODULE SELECTOR -->
-<div class="module-selector">
-  <button class="mod-btn" id="modBtnA" onclick="selectModule('A')">
-    <span class="mod-icon">📅</span>
-    Thời gian<br>hoàn vốn
-  </button>
-  <button class="mod-btn" id="modBtnB" onclick="selectModule('B')">
-    <span class="mod-icon">📊</span>
-    Điểm hòa vốn<br>hàng tháng
-  </button>
+<div class="module-selector" id="moduleSelectorWrap">
+  <button class="mod-btn" id="modBtnA" onclick="selectModule('A')" style="display:none"></button>
+  <button class="mod-btn" id="modBtnB" onclick="selectModule('B')" style="display:none"></button>
 </div>
 
-<!-- STEPPER A -->
 <div class="stepper" id="stepperA" style="display:none">
   <button class="step-tab" id="tabA1" onclick="goStepA(1)"><span class="snum">1</span>Doanh thu</button>
-  <button class="step-tab" id="tabA2" onclick="goStepA(2)"><span class="snum">2</span>Vốn &amp; Vay</button>
+  <button class="step-tab" id="tabA2" onclick="goStepA(2)"><span class="snum">2</span>Vốn bỏ ra</button>
   <button class="step-tab" id="tabA3" onclick="goStepA(3)"><span class="snum">3</span>Chi phí</button>
-  <button class="step-tab" id="tabA4" onclick="goStepA(4)"><span class="snum">4</span>Biến phí</button>
+  <button class="step-tab" id="tabA4" onclick="goStepA(4)"><span class="snum">4</span>Nguyên liệu</button>
   <button class="step-tab" id="tabA5" onclick="goStepA(5)"><span class="snum">5</span>Kết quả</button>
 </div>
-<!-- STEPPER B -->
 <div class="stepper" id="stepperB" style="display:none">
   <button class="step-tab" id="tabB1" onclick="goStepB(1)"><span class="snum">1</span>Chi phí</button>
-  <button class="step-tab" id="tabB2" onclick="goStepB(2)"><span class="snum">2</span>Biến phí</button>
+  <button class="step-tab" id="tabB2" onclick="goStepB(2)"><span class="snum">2</span>Nguyên liệu</button>
   <button class="step-tab" id="tabB3" onclick="goStepB(3)"><span class="snum">3</span>Kết quả</button>
 </div>
 <div class="progress-wrap"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
 
-<!-- MAIN -->
 <div class="main">
 
   <!-- HOME -->
   <div class="panel active" id="panelHome">
-    <div class="card" style="text-align:center;padding:32px 20px">
-      <div style="font-size:48px;margin-bottom:14px">🍵</div>
-      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;margin-bottom:8px">Chọn loại tính toán</div>
-      <p style="font-size:14px;color:var(--ink3);margin-bottom:24px;line-height:1.6">Nhập số liệu theo từng bước — app tự tính điểm hòa vốn, thời gian hoàn vốn và dự báo lợi nhuận cho bạn.</p>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-        <div onclick="selectModule('A')" style="cursor:pointer;background:var(--gold-bg);border:1.5px solid var(--gold-border);border-radius:12px;padding:20px 14px">
-          <div style="font-size:28px;margin-bottom:8px">📅</div>
-          <div style="font-family:'Fraunces',serif;font-weight:700;font-size:15px;margin-bottom:4px">Thời gian<br>hoàn vốn</div>
-          <div style="font-size:12px;color:var(--ink3)">Bao lâu thu hồi được vốn đầu tư?</div>
+    <div class="card" style="padding:32px 20px">
+      <div style="font-size:48px;margin-bottom:14px;text-align:center">🍵</div>
+      <div style="font-family:'Fraunces',serif;font-size:22px;font-weight:900;margin-bottom:6px;text-align:center">Quán của bạn đang ở giai đoạn nào?</div>
+      <p style="font-size:13px;color:var(--ink3);margin-bottom:24px;line-height:1.6;text-align:center">App sẽ tự chọn cách tính phù hợp nhất cho bạn</p>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div onclick="selectModule('A')"
+          style="cursor:pointer;background:var(--gold-bg);border:2px solid var(--gold-border);border-radius:14px;padding:18px 16px;display:flex;align-items:center;gap:14px;transition:all .2s"
+          onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--gold-border)'">
+          <div style="font-size:36px;flex-shrink:0">🏗️</div>
+          <div>
+            <div style="font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--ink);margin-bottom:4px">Tôi đang chuẩn bị mở quán</div>
+            <div style="font-size:13px;color:var(--ink3);line-height:1.5">Muốn tính xem bỏ ra bao nhiêu vốn, bao lâu lấy lại được, và mỗi tháng lãi được bao nhiêu</div>
+          </div>
+          <div style="font-size:20px;color:var(--gold);flex-shrink:0">→</div>
         </div>
-        <div onclick="selectModule('B')" style="cursor:pointer;background:var(--blue-bg);border:1.5px solid var(--blue-border);border-radius:12px;padding:20px 14px">
-          <div style="font-size:28px;margin-bottom:8px">📊</div>
-          <div style="font-family:'Fraunces',serif;font-weight:700;font-size:15px;margin-bottom:4px">Điểm hòa vốn<br>hàng tháng</div>
-          <div style="font-size:12px;color:var(--ink3)">Cần bán bao nhiêu để không lỗ?</div>
+        <div onclick="selectModule('B')"
+          style="cursor:pointer;background:var(--blue-bg);border:2px solid var(--blue-border);border-radius:14px;padding:18px 16px;display:flex;align-items:center;gap:14px;transition:all .2s"
+          onmouseover="this.style.borderColor='var(--blue)'" onmouseout="this.style.borderColor='var(--blue-border)'">
+          <div style="font-size:36px;flex-shrink:0">🏪</div>
+          <div>
+            <div style="font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--ink);margin-bottom:4px">Quán tôi đang chạy rồi</div>
+            <div style="font-size:13px;color:var(--ink3);line-height:1.5">Muốn biết mỗi ngày cần bán tối thiểu bao nhiêu để không lỗ</div>
+          </div>
+          <div style="font-size:20px;color:var(--blue);flex-shrink:0">→</div>
         </div>
       </div>
     </div>
-    <p style="font-size:11px;color:var(--ink3);text-align:center;padding:0 20px">⚠️ Đây là ước tính tham khảo, không phải tư vấn tài chính chuyên nghiệp.</p>
+    <p style="font-size:11px;color:var(--ink3);text-align:center;padding:0 20px 8px">⚠️ Đây là ước tính tham khảo, không phải tư vấn tài chính chuyên nghiệp.</p>
   </div>
 
   <!-- ══════ MODULE A ══════ -->
@@ -333,68 +325,77 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   <!-- A1: DOANH THU -->
   <div class="panel" id="panelA1">
     <div class="card">
-      <div class="card-title">💰 Doanh thu dự kiến</div>
-      <div class="card-desc">Nhập mức doanh thu bạn kỳ vọng đạt được khi quán đã đi vào hoạt động ổn định.</div>
+      <div class="card-title">💰 Bạn dự kiến bán được bao nhiêu?</div>
+      <div class="hint-box">
+        <strong>Điền số tiền bạn hy vọng thu được mỗi ngày khi quán đã chạy ổn định.</strong>
+        Ví dụ: quán café nhỏ thường thu 3–8 triệu/ngày tuỳ vị trí và quy mô.
+      </div>
       <div class="field">
-        <label>Doanh thu trung bình / ngày</label>
+        <label>Doanh thu trung bình mỗi ngày</label>
         <input type="number" id="aRevDay" min="0" placeholder="VD: 3800000" oninput="onRevDay()">
         <div class="preview" id="aRevDayPrev"></div>
-        <div class="hint">Tổng tiền bán được trong 1 ngày hoạt động bình thường</div>
+        <div class="hint">💡 Tổng tiền thu được trong 1 ngày bán hàng bình thường</div>
       </div>
       <div class="field">
-        <label>Doanh thu / tháng (= × 30 ngày)</label>
-        <input type="number" id="aRevMonth" min="0" placeholder="Tự động tính..." oninput="onRevMonth()">
+        <label>Hoặc nhập thẳng doanh thu mỗi tháng</label>
+        <input type="number" id="aRevMonth" min="0" placeholder="Tự động tính từ số ngày × 30..." oninput="onRevMonth()">
         <div class="preview" id="aRevMonthPrev"></div>
-        <div class="hint">Hoặc nhập trực tiếp nếu bạn đã có con số tháng</div>
+        <div class="hint">💡 Nếu bạn đã có con số tháng thì nhập thẳng vào đây</div>
       </div>
     </div>
     <div class="card">
-      <div class="card-title">⚙️ Cài đặt thời gian cọc mặt bằng</div>
-      <div class="card-desc">Nếu bạn đặt cọc nhiều tháng, chủ nhà thường cho "ở miễn phí" trong giai đoạn cọc đó. Cài đúng số tháng để tính dòng tiền chính xác.</div>
+      <div class="card-title">🏠 Tiền cọc mặt bằng</div>
+      <div class="hint-box">
+        <strong>Nhiều chủ nhà cho "ở miễn phí" trong thời gian bằng số tháng cọc.</strong>
+        Ví dụ: cọc 6 tháng → 6 tháng đầu không phải trả tiền thuê. Chọn đúng để tính dòng tiền chính xác hơn.
+      </div>
       <div class="field">
-        <label>Số tháng dùng tiền cọc (không trả thuê)</label>
+        <label>Bao nhiêu tháng không phải trả tiền thuê?</label>
         <select id="aRentFree">
-          <option value="0">0 tháng (trả thuê ngay từ tháng 1)</option>
-          <option value="3">3 tháng</option>
-          <option value="6" selected>6 tháng (mặc định theo template)</option>
-          <option value="12">12 tháng</option>
+          <option value="0">Trả thuê ngay từ tháng 1</option>
+          <option value="3">3 tháng (cọc 3 tháng)</option>
+          <option value="6" selected>6 tháng (cọc 6 tháng — phổ biến nhất)</option>
+          <option value="12">12 tháng (cọc 1 năm)</option>
         </select>
-        <div class="hint">Thường bằng số tháng cọc bạn đã đặt với chủ nhà. Dòng tiền thuê được đánh dấu ở bước Chi phí sẽ được loại trừ trong giai đoạn này.</div>
       </div>
     </div>
-    <button class="btn-primary" onclick="goStepA(2)">Tiếp theo → Vốn đầu tư &amp; Vay vốn</button>
+    <button class="btn-primary" onclick="goStepA(2)">Tiếp theo → Vốn bỏ ra ban đầu</button>
   </div>
 
-  <!-- A2: VỐN ĐẦU TƯ + KHẤU HAO + VAY VỐN -->
+  <!-- A2: VỐN ĐẦU TƯ -->
   <div class="panel" id="panelA2">
-    <!-- P1: CAPEX with depreciation -->
     <div class="card">
-      <div class="card-title">🏗️ Vốn đầu tư ban đầu &amp; Khấu hao</div>
-      <div class="card-desc">Nhập từng hạng mục chi phí bỏ ra khi mới mở quán và <strong>thời gian khấu hao</strong> tương ứng. Khấu hao/tháng sẽ được tự động tính vào chi phí hàng tháng, giúp bạn thấy rõ chi phí thực tế hơn.</div>
+      <div class="card-title">🏗️ Bạn phải bỏ ra bao nhiêu tiền để mở quán?</div>
+      <div class="hint-box">
+        <strong>Liệt kê tất cả khoản tiền bỏ ra trước khi bán hàng ngày đầu tiên.</strong>
+        Cột <em>"Dùng được bao lâu"</em> để app tính chi phí hao mòn hàng tháng — ví dụ máy pha cà phê mua 30 triệu, dùng 5 năm (60 tháng) thì mỗi tháng tính 500.000đ vào chi phí.
+      </div>
       <div class="brow-capex-header">
-        <span>Hạng mục</span><span>Số tiền (đ)</span><span>KH (tháng)</span><span>KH/tháng</span><span></span>
+        <span>Khoản chi</span><span>Số tiền (đ)</span><span>Dùng được (tháng)</span><span>Tính ra/tháng</span><span></span>
       </div>
       <div class="blist" id="capexList"></div>
-      <button class="add-btn" onclick="addCapexRow()">＋ Thêm hạng mục</button>
+      <button class="add-btn" onclick="addCapexRow()">＋ Thêm khoản chi</button>
+      <div style="font-size:11px;color:var(--ink3);margin-top:8px;padding:6px 10px;background:#faf9f7;border-radius:7px;line-height:1.6">
+        💡 Nhập số tiền bằng số đầy đủ. Ví dụ: 30 triệu → nhập <strong>30000000</strong> · 2,5 triệu → nhập <strong>2500000</strong>
+      </div>
       <div class="sec-total" style="margin-top:8px">
-        <span>Tổng vốn đầu tư ban đầu</span><span id="capexTotal">0đ</span>
+        <span>Tổng vốn bỏ ra ban đầu</span><span id="capexTotal">0đ</span>
       </div>
       <div class="sec-total" style="background:var(--purple-bg);border-color:var(--purple-border);color:var(--purple);margin-top:6px">
-        <span>Tổng khấu hao / tháng</span><span id="depreciationTotal">0đ</span>
+        <span>Tổng chi phí hao mòn / tháng</span><span id="depreciationTotal">0đ</span>
       </div>
     </div>
 
-    <!-- P2: LOAN -->
     <div class="loan-card">
-      <div class="card-title" style="color:var(--purple);margin-bottom:10px">🏦 Vay vốn <span style="font-size:12px;font-weight:400;color:var(--ink3)">(tùy chọn)</span></div>
+      <div class="card-title" style="color:var(--purple);margin-bottom:10px">🏦 Có vay tiền không? <span style="font-size:12px;font-weight:400;color:var(--ink3)">(tuỳ chọn)</span></div>
       <label class="loan-toggle">
         <input type="checkbox" id="loanEnabled" onchange="toggleLoan()">
-        <span>Tôi có vay vốn ngân hàng / người thân</span>
+        <span>Có, tôi vay ngân hàng hoặc người thân</span>
       </label>
       <div class="loan-fields" id="loanFields">
         <div class="field-row" style="margin-top:12px">
           <div class="field">
-            <label>Số tiền vay (đ)</label>
+            <label>Vay bao nhiêu (đ)</label>
             <input type="number" id="loanAmount" min="0" placeholder="VD: 200000000" oninput="calcLoan()">
           </div>
           <div class="field">
@@ -404,16 +405,19 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         </div>
         <div class="field-row">
           <div class="field">
-            <label>Kỳ hạn (tháng)</label>
+            <label>Trả trong bao nhiêu tháng</label>
             <input type="number" id="loanTerm" min="1" placeholder="VD: 36" value="36" oninput="calcLoan()">
           </div>
           <div class="field">
-            <label>Phương thức</label>
+            <label>Cách tính lãi</label>
             <select id="loanType" onchange="calcLoan()">
-              <option value="flat">Lãi phẳng (đơn giản)</option>
-              <option value="reducing">Dư nợ giảm dần</option>
+              <option value="flat">Lãi cố định hàng tháng</option>
+              <option value="reducing">Lãi giảm dần theo dư nợ</option>
             </select>
           </div>
+        </div>
+        <div class="hint-box" style="margin-top:8px;font-size:12px">
+          💡 <strong>Lãi cố định:</strong> trả đều mỗi tháng, dễ tính. <strong>Lãi giảm dần:</strong> tháng sau trả ít hơn tháng trước vì nợ đã giảm.
         </div>
         <div class="loan-result" id="loanResult"></div>
       </div>
@@ -421,26 +425,22 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 
     <div class="btn-row">
       <button class="btn-back" onclick="goStepA(1)">← Quay lại</button>
-      <button class="btn-next" onclick="goStepA(3)">Tiếp → Chi phí cố định</button>
+      <button class="btn-next" onclick="goStepA(3)">Tiếp → Chi phí hàng tháng</button>
     </div>
   </div>
 
-  <!-- A3: CHI PHÍ CỐ ĐỊNH (P3 fix: checkbox thuê mặt bằng) -->
+  <!-- A3: CHI PHÍ CỐ ĐỊNH -->
   <div class="panel" id="panelA3">
     <div class="card">
-      <div class="card-title">🏠 Chi phí cố định hàng tháng</div>
-      <div class="card-desc">Nhập các khoản phải trả mỗi tháng dù bán nhiều hay ít. Tick vào cột <strong>🏠 Thuê MB</strong> cho dòng tiền thuê mặt bằng — khoản này sẽ được tự động loại trừ trong giai đoạn bạn đang dùng tiền cọc.</div>
+      <div class="card-title">🏠 Chi phí phải trả mỗi tháng dù bán nhiều hay ít</div>
+      <div class="hint-box">
+        <strong>Đây là những khoản "cứng" — dù quán đông hay vắng vẫn phải trả.</strong>
+        Tick vào cột <strong>🏠 Thuê MB</strong> cho dòng tiền thuê mặt bằng — khoản này sẽ tự động được trừ ra trong thời gian bạn đang dùng tiền cọc.
+      </div>
       <div class="brow-fc-header">
         <span style="text-align:left">Tên chi phí</span>
-        <span>Đ.vị</span>
-        <span>SL</span>
-        <span>Đơn giá</span>
-        <span>Thành tiền</span>
-        <span>
-          <span class="tooltip-wrap">🏠 Thuê MB
-            <span class="tooltip-box">Tick vào đây nếu đây là tiền thuê mặt bằng. Khoản này sẽ được miễn trong giai đoạn dùng tiền cọc.</span>
-          </span>
-        </span>
+        <span>Đ.vị</span><span>SL</span><span>Đơn giá</span><span>Thành tiền</span>
+        <span><span class="tooltip-wrap">🏠 Thuê MB<span class="tooltip-box">Tick nếu đây là tiền thuê mặt bằng — sẽ được miễn trong giai đoạn dùng tiền cọc</span></span></span>
         <span></span>
       </div>
       <div class="blist" id="fcList"></div>
@@ -449,42 +449,45 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     </div>
     <div class="btn-row">
       <button class="btn-back" onclick="goStepA(2)">← Quay lại</button>
-      <button class="btn-next" onclick="goStepA(4)">Tiếp → Biến phí</button>
+      <button class="btn-next" onclick="goStepA(4)">Tiếp → Chi phí nguyên liệu</button>
     </div>
   </div>
 
   <!-- A4: BIẾN PHÍ -->
   <div class="panel" id="panelA4">
     <div class="card">
-      <div class="card-title">🧮 Chi phí biến đổi &amp; Giá bán</div>
-      <div class="card-desc">Chọn tỷ lệ chi phí nguyên liệu phù hợp với loại hình của bạn, sau đó nhập giá bán trung bình mỗi lượt khách.</div>
+      <div class="card-title">🧮 Chi phí nguyên liệu chiếm bao nhiêu % doanh thu?</div>
+      <div class="hint-box">
+        <strong>Cứ thu 100.000đ thì bạn tốn bao nhiêu cho nguyên liệu?</strong>
+        Chọn loại hình gần nhất — app đã tính sẵn tỷ lệ trung bình ngành. Bạn có thể chỉnh lại nếu biết con số chính xác hơn.
+      </div>
       <div class="field">
-        <label>Tỷ lệ chi phí biến đổi (nguyên liệu) / doanh thu (%)</label>
+        <label>Loại hình kinh doanh của bạn</label>
         <select id="aVcPreset" onchange="onVcPreset('a')">
-          <option value="">— Chọn nhanh theo ngành —</option>
-          <option value="22">☕ Cafe cơ bản (~22%)</option>
+          <option value="">— Chọn để điền tự động —</option>
+          <option value="22">☕ Café thuần tuý (~22% — nguyên liệu rẻ, chủ yếu cà phê và sữa)</option>
           <option value="28">🧋 Trà sữa / đồ uống (~28%)</option>
-          <option value="30" selected>🍵 Cafe + đồ ăn nhẹ (~30%) — mặc định</option>
-          <option value="32">🍲 Nhà hàng / quán ăn (~32%)</option>
-          <option value="40">🍜 Fast food / ăn nhanh (~40%)</option>
-          <option value="custom">✏️ Tự nhập...</option>
+          <option value="30" selected>🍵 Café + đồ ăn nhẹ (~30%) — mặc định</option>
+          <option value="32">🍲 Quán ăn / nhà hàng (~32%)</option>
+          <option value="40">🍜 Cơm tấm / bún phở (~40% — nguyên liệu nhiều hơn)</option>
+          <option value="custom">✏️ Tôi biết con số chính xác, tự nhập...</option>
         </select>
       </div>
       <div class="field">
-        <label>Tỷ lệ biến phí (%) — chỉnh trực tiếp</label>
+        <label>Tỷ lệ chi phí nguyên liệu (%) — chỉnh nếu cần</label>
         <input type="number" id="aVcRate" min="1" max="99" value="30" step="0.5" oninput="onVcRate('a')">
-        <div class="hint">Cứ 100đ doanh thu thì <span id="aVcHint">30đ</span> là chi phí nguyên liệu, còn lại là lãi gộp</div>
+        <div class="hint">💡 Ý nghĩa: cứ thu 100đ thì tốn <span id="aVcHint">30</span>đ cho nguyên liệu, còn lại <span id="aMarginHint">70</span>đ là lãi gộp</div>
       </div>
       <div class="field">
-        <label>Giá bán trung bình / đơn hàng</label>
+        <label>Mỗi khách vào quán trả trung bình bao nhiêu?</label>
         <input type="number" id="aAvgPrice" min="0" placeholder="VD: 50000" value="50000" oninput="previewNum('aAvgPrice','aAvgPricePrev')">
         <div class="preview" id="aAvgPricePrev">50.000đ</div>
-        <div class="hint">Dùng để tính số lượng đơn hàng cần bán để hòa vốn</div>
+        <div class="hint">💡 Ví dụ: 10 khách vào, thu được 500.000đ → nhập 50.000. App dùng con số này để tính "mỗi ngày cần bao nhiêu khách"</div>
       </div>
     </div>
     <div class="btn-row">
       <button class="btn-back" onclick="goStepA(3)">← Quay lại</button>
-      <button class="btn-next" onclick="calculateA()">🚀 Tính toán → Xem kết quả</button>
+      <button class="btn-next" onclick="calculateA()">🚀 Xem kết quả</button>
     </div>
   </div>
 
@@ -493,7 +496,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <div id="resultA">
       <div style="text-align:center;padding:40px 20px;color:var(--ink3)">
         <div style="font-size:40px;margin-bottom:12px">📊</div>
-        <p>Điền đầy đủ thông tin rồi bấm "Tính toán"</p>
+        <p>Điền đầy đủ thông tin rồi bấm "Xem kết quả"</p>
       </div>
     </div>
     <div class="btn-row">
@@ -501,7 +504,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <button class="btn-reset" onclick="resetAll()">🔄 Làm lại</button>
     </div>
     <button class="btn-share" onclick="shareResult('A')">📋 Copy tóm tắt để gửi Zalo / Messenger</button>
-    <button class="btn-print" onclick="window.print()">🖨️ In / Lưu PDF kết quả</button>
+    <button class="btn-print" onclick="window.print()">🖨️ In / Lưu PDF</button>
   </div>
 
   <!-- ══════ MODULE B ══════ -->
@@ -509,22 +512,18 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   <!-- B1: CHI PHÍ CỐ ĐỊNH -->
   <div class="panel" id="panelB1">
     <div id="bReuseBox" class="info-note" style="display:none">
-      💡 Bạn đã nhập chi phí cố định ở Module A. <strong><span id="bReuseBtn" onclick="reuseFromA()" style="cursor:pointer;text-decoration:underline">Nhấn để dùng lại</span></strong> hoặc nhập mới bên dưới.
+      💡 Bạn đã nhập chi phí ở Module A. <strong><span id="bReuseBtn" onclick="reuseFromA()" style="cursor:pointer;text-decoration:underline">Nhấn để dùng lại</span></strong> hoặc nhập mới bên dưới.
     </div>
     <div class="card">
-      <div class="card-title">🏠 Chi phí cố định hàng tháng</div>
-      <div class="card-desc">Nhập tất cả chi phí phải trả mỗi tháng — dù bán được hay không. Tick <strong>🏠 Thuê MB</strong> cho dòng tiền thuê mặt bằng.</div>
+      <div class="card-title">🏠 Chi phí phải trả mỗi tháng dù bán nhiều hay ít</div>
+      <div class="hint-box">
+        <strong>Liệt kê tất cả khoản tiền "cứng" — dù đông khách hay vắng vẫn phải trả.</strong>
+        Tick <strong>🏠 Thuê MB</strong> cho dòng tiền thuê mặt bằng.
+      </div>
       <div class="brow-fc-header">
         <span style="text-align:left">Tên chi phí</span>
-        <span>Đ.vị</span>
-        <span>SL</span>
-        <span>Đơn giá</span>
-        <span>Thành tiền</span>
-        <span>
-          <span class="tooltip-wrap">🏠 Thuê MB
-            <span class="tooltip-box">Tick vào đây nếu đây là tiền thuê mặt bằng. Khoản này sẽ được miễn trong giai đoạn dùng tiền cọc.</span>
-          </span>
-        </span>
+        <span>Đ.vị</span><span>SL</span><span>Đơn giá</span><span>Thành tiền</span>
+        <span><span class="tooltip-wrap">🏠 Thuê MB<span class="tooltip-box">Tick nếu đây là tiền thuê mặt bằng</span></span></span>
         <span></span>
       </div>
       <div class="blist" id="fcListB"></div>
@@ -532,48 +531,52 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <div class="sec-total"><span>Tổng chi phí cố định / tháng</span><span id="fcTotalB">0đ</span></div>
     </div>
     <div class="btn-row">
-      <button class="btn-back" onclick="selectModule(null)">← Chọn lại</button>
-      <button class="btn-next" onclick="goStepB(2)">Tiếp → Biến phí</button>
+      <button class="btn-back" onclick="selectModule(null)">← Chọn lại giai đoạn</button>
+      <button class="btn-next" onclick="goStepB(2)">Tiếp → Chi phí nguyên liệu</button>
     </div>
   </div>
 
   <!-- B2: BIẾN PHÍ -->
   <div class="panel" id="panelB2">
     <div class="card">
-      <div class="card-title">🧮 Chi phí biến đổi &amp; Giá bán</div>
-      <div class="card-desc">Chọn tỷ lệ chi phí nguyên liệu phù hợp với loại hình của bạn, sau đó nhập giá bán trung bình mỗi lượt khách.</div>
+      <div class="card-title">🧮 Chi phí nguyên liệu và giá bán</div>
+      <div class="hint-box">
+        <strong>Chọn loại hình gần nhất để điền tỷ lệ tự động.</strong>
+        Sau đó nhập giá trung bình mỗi đơn hàng để tính số đơn cần bán mỗi ngày.
+      </div>
       <div class="field">
-        <label>Tỷ lệ chi phí biến đổi / doanh thu (%)</label>
+        <label>Loại hình kinh doanh</label>
         <select id="bVcPreset" onchange="onVcPreset('b')">
-          <option value="">— Chọn nhanh —</option>
-          <option value="22">☕ Cafe (~22%)</option>
+          <option value="">— Chọn để điền tự động —</option>
+          <option value="22">☕ Café thuần tuý (~22%)</option>
           <option value="28">🧋 Trà sữa (~28%)</option>
-          <option value="35" selected>🍵 Cafe + ăn nhẹ (~35%) — mặc định</option>
-          <option value="32">🍲 Nhà hàng (~32%)</option>
-          <option value="40">🍜 Fast food (~40%)</option>
+          <option value="35" selected>🍵 Café + ăn nhẹ (~35%) — mặc định</option>
+          <option value="32">🍲 Quán ăn (~32%)</option>
+          <option value="40">🍜 Cơm tấm / bún phở (~40%)</option>
         </select>
       </div>
       <div class="field">
-        <label>Tỷ lệ biến phí (%) — chỉnh trực tiếp</label>
+        <label>Tỷ lệ chi phí nguyên liệu (%) — chỉnh nếu cần</label>
         <input type="number" id="bVcRate" min="1" max="99" value="35" step="0.5" oninput="onVcRate('b')">
-        <div class="hint">Cứ 100đ doanh thu thì <span id="bVcHint">35đ</span> là chi phí nguyên liệu</div>
+        <div class="hint">💡 Cứ thu 100đ thì tốn <span id="bVcHint">35</span>đ cho nguyên liệu</div>
       </div>
       <div class="field">
-        <label>Giá bán trung bình / đơn hàng</label>
+        <label>Mỗi khách vào quán trả trung bình bao nhiêu?</label>
         <input type="number" id="bAvgPrice" min="0" placeholder="VD: 50000" value="50000" oninput="previewNum('bAvgPrice','bAvgPricePrev')">
         <div class="preview" id="bAvgPricePrev">50.000đ</div>
+        <div class="hint">💡 Ví dụ: bán ly cà phê 35.000đ, bánh 15.000đ → trung bình 50.000đ/khách</div>
       </div>
       <div class="divider"></div>
       <div class="field">
-        <label>Doanh thu dự kiến / tháng (tùy chọn)</label>
-        <input type="number" id="bForecast" min="0" placeholder="VD: 160000000 — để trống nếu chưa biết" oninput="previewNum('bForecast','bForecastPrev')">
+        <label>Doanh thu bạn kỳ vọng mỗi tháng <span style="color:var(--ink3);text-transform:none;font-weight:400">(tuỳ chọn)</span></label>
+        <input type="number" id="bForecast" min="0" placeholder="Để trống nếu chưa biết" oninput="previewNum('bForecast','bForecastPrev')">
         <div class="preview" id="bForecastPrev"></div>
-        <div class="hint">Nếu nhập, app sẽ tính lợi nhuận ước tính và sensitivity analysis</div>
+        <div class="hint">💡 Nhập để app tính thêm lợi nhuận ước tính và các kịch bản</div>
       </div>
     </div>
     <div class="btn-row">
       <button class="btn-back" onclick="goStepB(1)">← Quay lại</button>
-      <button class="btn-next" onclick="calculateB()">🚀 Tính toán → Xem kết quả</button>
+      <button class="btn-next" onclick="calculateB()">🚀 Xem kết quả</button>
     </div>
   </div>
 
@@ -582,7 +585,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <div id="resultB">
       <div style="text-align:center;padding:40px 20px;color:var(--ink3)">
         <div style="font-size:40px;margin-bottom:12px">📊</div>
-        <p>Điền đầy đủ thông tin rồi bấm "Tính toán"</p>
+        <p>Điền đầy đủ thông tin rồi bấm "Xem kết quả"</p>
       </div>
     </div>
     <div class="btn-row">
@@ -590,17 +593,15 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <button class="btn-reset" onclick="resetAll()">🔄 Làm lại</button>
     </div>
     <button class="btn-share" onclick="shareResult('B')">📋 Copy tóm tắt để gửi Zalo / Messenger</button>
-    <button class="btn-print" onclick="window.print()">🖨️ In / Lưu PDF kết quả</button>
+    <button class="btn-print" onclick="window.print()">🖨️ In / Lưu PDF</button>
   </div>
 
-</div><!-- /main -->
+</div>
 
 <script>
 'use strict';
 
-// ════════════════════════════════
-// 1. STATE
-// ════════════════════════════════
+// ════════ 1. STATE (GIỮ NGUYÊN) ════════
 const STATE = {
   module: null, stepA: 1, stepB: 1,
   A: { revDay:0, revMonth:0, rentFreeMonths:6, capexList:[], fcList:[], vcRate:0.30, avgPrice:50000,
@@ -611,9 +612,16 @@ const STATE = {
 };
 let chartA=null, chartB=null;
 
-// ════════════════════════════════
-// 2. UTILS
-// ════════════════════════════════
+// ════════ 2. UTILS (GIỮ NGUYÊN) ════════
+// Format số tiền khi hiển thị trong input readonly (chi phí/tháng)
+function fmtReadonly(n) {
+  if (!n || !isFinite(n)) return '';
+  const abs = Math.abs(Math.round(n));
+  if (abs >= 1e9) return (abs/1e9).toFixed(1) + ' tỷ';
+  if (abs >= 1e6) return (abs/1e6).toFixed(1) + 'tr';
+  if (abs >= 1e3) return (abs/1e3).toFixed(0) + 'k';
+  return abs + 'đ';
+}
 function fmtVND(n){
   if(n===null||n===undefined||!isFinite(n))return'—';
   const abs=Math.abs(Math.round(n));const sign=n<0?'-':'';
@@ -630,7 +638,6 @@ function previewNum(inputId,previewId){
   const el=document.getElementById(previewId);
   if(el)el.textContent=fmtFull(val);
 }
-// P3 FIX: sum only rows NOT flagged as rent, for the rent-excluded FC total
 function sumFCExcludeRent(listId){
   return [...document.querySelectorAll(`#${listId} .brow-fc`)].reduce((s,row)=>{
     const isRent=row.querySelector('.rent-flag')?.checked||false;
@@ -676,9 +683,7 @@ function calcFcRow(el){
 }
 function scrollTop(){window.scrollTo({top:0,behavior:'smooth'});}
 
-// ════════════════════════════════
-// 3. NAVIGATION
-// ════════════════════════════════
+// ════════ 3. NAVIGATION (GIỮ NGUYÊN) ════════
 function selectModule(mod){
   STATE.module=mod;
   document.getElementById('modBtnA').classList.toggle('active',mod==='A');
@@ -723,15 +728,13 @@ function goStepB(n){
 }
 function updateProgress(pct){document.getElementById('progressFill').style.width=pct+'%';}
 
-// ════════════════════════════════
-// 4. VALIDATION
-// ════════════════════════════════
+// ════════ 4. VALIDATION (GIỮ NGUYÊN) ════════
 function validateA1(){
   const rev=parseFloat(document.getElementById('aRevMonth')?.value)||0;
   if(rev<=0){alert('Vui lòng nhập doanh thu dự kiến!');return false;}return true;
 }
 function validateA2(){
-  if(sumCapex()<=0){alert('Vui lòng nhập ít nhất 1 hạng mục vốn đầu tư!');return false;}return true;
+  if(sumCapex()<=0){alert('Vui lòng nhập ít nhất 1 khoản vốn bỏ ra!');return false;}return true;
 }
 function validateA3(){
   if(sumFC('fcList')<=0){alert('Vui lòng nhập ít nhất 1 chi phí cố định!');return false;}return true;
@@ -740,22 +743,18 @@ function validateB1(){
   if(sumFC('fcListB')<=0){alert('Vui lòng nhập ít nhất 1 chi phí cố định!');return false;}return true;
 }
 
-// ════════════════════════════════
-// 5. ROW BUILDERS
-// ════════════════════════════════
-// P1: CAPEX with depreciation
+// ════════ 5. ROW BUILDERS (GIỮ NGUYÊN logic, đổi label) ════════
 function addCapexRow(name='',amt='',depMonths=60){
   const list=document.getElementById('capexList');
   const div=document.createElement('div');div.className='brow-capex';
-  const depPerMonth=amt&&depMonths?Math.round(parseFloat(amt)/parseFloat(depMonths)):0;
+  const depPerMonth=amt&&depMonths&&parseFloat(depMonths)>0?Math.round(parseFloat(amt)/parseFloat(depMonths)):0;
   div.innerHTML=`
-    <input type="text" placeholder="Tên hạng mục..." value="${name}">
-    <input type="number" class="cap-amt" placeholder="Số tiền" min="0" value="${amt}" oninput="updateCapexTotal()">
+    <input type="text" placeholder="VD: Máy pha cà phê, bàn ghế..." value="${name}">
+    <input type="number" class="cap-amt" placeholder="VD: 30000000" min="0" value="${amt}" oninput="updateCapexTotal()" title="Nhập số tiền (đồng). VD: 30 triệu = 30000000">
     <input type="number" class="cap-dep" placeholder="VD: 60" min="1" value="${depMonths}" oninput="updateCapexTotal()">
-    <input type="number" class="cap-dep-pm" placeholder="Tự tính" readonly value="${depPerMonth||''}">
+    <input type="text" class="cap-dep-pm" placeholder="Tự tính" readonly value="${depPerMonth>0?fmtReadonly(depPerMonth):''}" style="text-align:center;font-size:12px">
     <button class="del-btn" onclick="this.closest('.brow-capex').remove();updateCapexTotal()">×</button>`;
   list.appendChild(div);
-  // Live update dep/month on amount/dep change
   const row=div;
   row.querySelector('.cap-amt').addEventListener('input',()=>{
     const a=parseFloat(row.querySelector('.cap-amt').value)||0;
@@ -772,13 +771,12 @@ function addCapexRow(name='',amt='',depMonths=60){
   if(amt)updateCapexTotal();
 }
 
-// P3 FIX: addFcRow with rent checkbox
 function addFcRow(listId='fcList',name='',unit='Tháng',qty=1,price='',total='',isRent=false){
   const list=document.getElementById(listId);
   const div=document.createElement('div');div.className='brow-fc';
   const totalId=listId==='fcList'?'fcTotal':'fcTotalB';
   div.innerHTML=`
-    <input type="text" placeholder="Tên chi phí..." value="${name}">
+    <input type="text" placeholder="VD: Thuê mặt bằng, lương NV..." value="${name}">
     <select class="fc-unit">
       <option ${unit==='Tháng'?'selected':''}>Tháng</option>
       <option ${unit==='Người'?'selected':''}>Người</option>
@@ -787,7 +785,7 @@ function addFcRow(listId='fcList',name='',unit='Tháng',qty=1,price='',total='',
     <input type="number" class="fc-qty" min="0" value="${qty}" oninput="calcFcRow(this)">
     <input type="number" class="fc-price" min="0" placeholder="Đơn giá" value="${price}" oninput="calcFcRow(this)">
     <input type="number" class="fc-total" readonly value="${total}">
-    <div class="rent-chk-wrap" title="Tick vào đây nếu đây là tiền thuê mặt bằng">
+    <div class="rent-chk-wrap">
       <input type="checkbox" class="rent-flag" ${isRent?'checked':''} title="Tiền thuê mặt bằng">
     </div>
     <button class="del-btn" onclick="this.closest('.brow-fc').remove();updateFcTotal('${listId}','${totalId}')">×</button>`;
@@ -798,9 +796,7 @@ function addFcRowB(name='',unit='Tháng',qty=1,price='',total='',isRent=false){
   addFcRow('fcListB',name,unit,qty,price,total,isRent);
 }
 
-// ════════════════════════════════
-// 6. INPUT HANDLERS
-// ════════════════════════════════
+// ════════ 6. INPUT HANDLERS (GIỮ NGUYÊN + thêm margin hint) ════════
 function onRevDay(){
   const v=parseFloat(document.getElementById('aRevDay').value)||0;
   document.getElementById('aRevDayPrev').textContent=fmtFull(v);
@@ -817,10 +813,12 @@ function onVcPreset(mod){
 }
 function onVcRate(mod){
   const v=parseFloat(document.getElementById(mod+'VcRate').value)||0;
-  document.getElementById(mod+'VcHint').textContent=v+'đ';
+  const hint=document.getElementById(mod+'VcHint');
+  if(hint)hint.textContent=v;
+  // Cập nhật margin hint nếu có
+  const marginHint=document.getElementById(mod+'MarginHint');
+  if(marginHint)marginHint.textContent=Math.round(100-v);
 }
-
-// P2: Loan calculator
 function toggleLoan(){
   const enabled=document.getElementById('loanEnabled').checked;
   document.getElementById('loanFields').classList.toggle('show',enabled);
@@ -837,7 +835,6 @@ function calcLoan(){
   if(type==='flat'){
     monthly=(amount*annualRate/100/12)+(amount/term);
   } else {
-    // Reducing balance — standard formula
     const r=annualRate/100/12;
     monthly=amount*(r*Math.pow(1+r,term))/(Math.pow(1+r,term)-1);
   }
@@ -852,22 +849,17 @@ function getLoanMonthly(){
   return el?._monthly||0;
 }
 
-// ════════════════════════════════
-// 7. SEED DEFAULTS
-// ════════════════════════════════
+// ════════ 7. SEED DEFAULTS (GIỮ NGUYÊN) ════════
 function seedDefaults(){
-  // CAPEX — name, amount, depreciation months
   [
     ['Thiết kế + Thi công quán','50000000',60],
     ['Mua máy móc pha chế','120000000',60],
     ['Mua bàn ghế','50000000',48],
     ['Mua đồ trang trí','30000000',36],
-    ['Chi phí R&D công thức','20000000',24],
+    ['Thử nghiệm công thức món/đồ uống','20000000',24],
     ['Đặt cọc mặt bằng (6 tháng)','150000000',0],
     ['Chi phí phát sinh khác','30000000',12],
   ].forEach(([n,v,d])=>addCapexRow(n,v,d||60));
-
-  // FC Module A — name, unit, qty, price, total, isRent
   [
     ['Thuê mặt bằng','Tháng',1,25000000,25000000,true],
     ['Mạng internet','Tháng',1,2000000,2000000,false],
@@ -876,10 +868,8 @@ function seedDefaults(){
     ['Marketing','Tháng',1,5000000,5000000,false],
     ['Điện','Tháng',1,1000000,1000000,false],
     ['Nước','Tháng',1,2000000,2000000,false],
-    ['VPP & Công cụ dụng cụ','Tháng',1,2000000,2000000,false],
+    ['Văn phòng phẩm & dụng cụ','Tháng',1,2000000,2000000,false],
   ].forEach(([n,u,q,p,t,r])=>addFcRow('fcList',n,u,q,p,t,r));
-
-  // FC Module B
   [
     ['Thuê mặt bằng','Tháng',1,25000000,25000000,true],
     ['Mạng internet','Tháng',1,1000000,1000000,false],
@@ -888,10 +878,9 @@ function seedDefaults(){
     ['Marketing','Tháng',1,5000000,5000000,false],
     ['Điện','Tháng',1,1000000,1000000,false],
     ['Nước','Tháng',1,2000000,2000000,false],
-    ['VPP & Công cụ dụng cụ','Tháng',1,2000000,2000000,false],
+    ['Văn phòng phẩm & dụng cụ','Tháng',1,2000000,2000000,false],
   ].forEach(([n,u,q,p,t,r])=>addFcRow('fcListB',n,u,q,p,t,r));
 }
-
 function reuseFromA(){
   document.getElementById('fcListB').innerHTML='';
   document.querySelectorAll('#fcList .brow-fc').forEach(row=>{
@@ -906,51 +895,38 @@ function reuseFromA(){
   updateFcTotal('fcListB','fcTotalB');
 }
 
-// ════════════════════════════════
-// 8. CALCULATION ENGINE
-// ════════════════════════════════
+// ════════ 8. CALCULATION ENGINE (GIỮ NGUYÊN HOÀN TOÀN) ════════
 function calculateA(){
   const vcRate=(parseFloat(document.getElementById('aVcRate').value)||30)/100;
   const avgPrice=parseFloat(document.getElementById('aAvgPrice').value)||50000;
-  if(vcRate>=1){alert('Tỷ lệ biến phí phải nhỏ hơn 100%!');return;}
+  if(vcRate>=1){alert('Tỷ lệ chi phí nguyên liệu phải nhỏ hơn 100%!');return;}
   if(avgPrice<=0){alert('Vui lòng nhập giá bán trung bình!');return;}
   const revMonth=parseFloat(document.getElementById('aRevMonth').value)||0;
   if(revMonth<=0){alert('Vui lòng nhập doanh thu!');goStepA(1);return;}
   const totalCapex=sumCapex();
   const totalFC=sumFC('fcList');
   if(totalFC<=0){alert('Vui lòng nhập chi phí cố định!');goStepA(3);return;}
-
-  // P1: get depreciation
   const totalDepreciation=sumDepreciation();
-
-  // P2: get loan monthly
   const loanMonthly=getLoanMonthly();
-
-  // P3 FIX: use checkbox-flagged rent rows
   const rentPerMonth=getRentTotal('fcList');
   const rentFreeMonths=parseInt(document.getElementById('aRentFree').value)||6;
-
-  // Adjusted FC includes depreciation + loan
   const adjustedFC=totalFC+totalDepreciation+loanMonthly;
-
   const projection=calcProjection({revMonth,vcRate,totalCapex,adjustedFC,totalFC,rentPerMonth,rentFreeMonths,totalDepreciation,loanMonthly},72);
   const paybackIdx=projection.findIndex(r=>r.cumulativeProfit>=0);
   const paybackMonth=paybackIdx>=0?projection[paybackIdx].month:null;
   const yearlyData=calcYearlyRollup(projection);
   const bepRevMonth=adjustedFC/(1-vcRate);
   const bepOrders=Math.ceil(bepRevMonth/avgPrice);
+  const bepOrdersDay=Math.ceil(bepRevMonth/30/avgPrice);
   const monthlyProfit=revMonth*(1-vcRate)-adjustedFC;
-
-  STATE.lastResultA={projection,paybackMonth,yearlyData,bepRevMonth,bepOrders,monthlyProfit,revMonth,totalCapex,totalFC,adjustedFC,vcRate,avgPrice,rentFreeMonths,totalDepreciation,loanMonthly};
+  STATE.lastResultA={projection,paybackMonth,yearlyData,bepRevMonth,bepOrders,bepOrdersDay,monthlyProfit,revMonth,totalCapex,totalFC,adjustedFC,vcRate,avgPrice,rentFreeMonths,totalDepreciation,loanMonthly,rentPerMonth};
   goStepA(5);
   renderResultA(STATE.lastResultA);
 }
-
 function calcProjection(inp,months=72){
   const{revMonth,vcRate,totalCapex,adjustedFC,rentPerMonth,rentFreeMonths}=inp;
   const proj=[];let cumulative=-totalCapex;
   for(let m=1;m<=months;m++){
-    // P3 FIX: exclude the correctly-detected rent
     const fc=m<=rentFreeMonths?adjustedFC-rentPerMonth:adjustedFC;
     const variableCost=revMonth*vcRate;
     const profit=revMonth-variableCost-fc;
@@ -960,7 +936,6 @@ function calcProjection(inp,months=72){
   }
   return proj;
 }
-
 function calcYearlyRollup(proj){
   const years=[];
   for(let y=0;y<6;y++){
@@ -976,12 +951,11 @@ function calcYearlyRollup(proj){
   }
   return years;
 }
-
 function calculateB(){
   const vcRate=(parseFloat(document.getElementById('bVcRate').value)||35)/100;
   const avgPrice=parseFloat(document.getElementById('bAvgPrice').value)||50000;
   const forecast=parseFloat(document.getElementById('bForecast').value)||0;
-  if(vcRate>=1){alert('Tỷ lệ biến phí phải nhỏ hơn 100%!');return;}
+  if(vcRate>=1){alert('Tỷ lệ chi phí nguyên liệu phải nhỏ hơn 100%!');return;}
   const totalFC=sumFC('fcListB');
   if(totalFC<=0){alert('Vui lòng nhập ít nhất 1 chi phí cố định!');goStepB(1);return;}
   if(avgPrice<=0){alert('Vui lòng nhập giá bán trung bình!');return;}
@@ -995,19 +969,18 @@ function calculateB(){
   renderResultB(STATE.lastResultB);
 }
 
-// ════════════════════════════════
-// 9. RENDER RESULTS
-// ════════════════════════════════
+// ════════ 9. RENDER RESULTS — ĐÂY LÀ PHẦN SỬA NHIỀU NHẤT ════════
 function renderResultA(d){
-  const{projection,paybackMonth,yearlyData,bepRevMonth,bepOrders,monthlyProfit,revMonth,totalCapex,adjustedFC,totalFC,vcRate,avgPrice,rentFreeMonths,totalDepreciation,loanMonthly}=d;
+  const{projection,paybackMonth,yearlyData,bepRevMonth,bepOrders,bepOrdersDay,monthlyProfit,revMonth,totalCapex,adjustedFC,totalFC,vcRate,avgPrice,rentFreeMonths,totalDepreciation,loanMonthly}=d;
   const paybackYear=paybackMonth?(paybackMonth/12).toFixed(1):null;
 
   let advice;
-  if(!paybackMonth){advice={type:'red',icon:'🛑',title:'Không thể hoàn vốn trong 72 tháng',text:`Với mức doanh thu ${fmtVND(revMonth)}/tháng và chi phí điều chỉnh ${fmtVND(adjustedFC)}/tháng, không đủ bù vốn đầu tư ${fmtVND(totalCapex)}.`,actions:['Tăng doanh thu','Giảm chi phí cố định','Xem xét lại quy mô đầu tư']};}
-  else if(paybackMonth<=18){advice={type:'green',icon:'💎',title:'Mô hình xuất sắc!',text:`Hoàn vốn trong ${paybackMonth} tháng (~${paybackYear} năm) — rất ấn tượng so với chuẩn ngành F&B (18-36 tháng).`,actions:['Tái đầu tư lợi nhuận để mở rộng','Xây dựng thương hiệu','Chuẩn hóa quy trình vận hành']};}
-  else if(paybackMonth<=36){advice={type:'gold',icon:'✅',title:'Mô hình ổn định',text:`Hoàn vốn ${paybackMonth} tháng (~${paybackYear} năm) — nằm trong ngưỡng bình thường của ngành F&B.`,actions:['Tập trung giữ chân khách hàng cũ','Kiểm soát chi phí nguyên liệu','Tạo combo để tăng giá trị đơn']};}
-  else{advice={type:'orange',icon:'⚠️',title:'Thời gian hoàn vốn khá dài',text:`${paybackMonth} tháng (~${paybackYear} năm) vượt chuẩn ngành. Cần xem lại chi phí đầu tư hoặc tăng doanh thu.`,actions:['Rà soát lại chi phí đầu tư ban đầu','Tìm cách tăng doanh thu/ngày','Cân nhắc giảm quy mô ban đầu']};}
+  if(!paybackMonth){advice={type:'red',icon:'🛑',title:'Khó thu hồi vốn trong 6 năm tới',text:`Với doanh thu ${fmtVND(revMonth)}/tháng và chi phí ${fmtVND(adjustedFC)}/tháng, lợi nhuận không đủ để bù lại vốn đầu tư ${fmtVND(totalCapex)}.`,actions:['Tăng doanh thu','Giảm chi phí cố định','Xem lại quy mô đầu tư ban đầu']};}
+  else if(paybackMonth<=18){advice={type:'green',icon:'💎',title:'Mô hình rất tốt!',text:`Thu hồi vốn trong ${paybackMonth} tháng (~${paybackYear} năm) — nhanh hơn trung bình ngành F&B (18–36 tháng).`,actions:['Tái đầu tư lợi nhuận để mở rộng','Xây dựng thương hiệu','Chuẩn hóa quy trình']};}
+  else if(paybackMonth<=36){advice={type:'gold',icon:'✅',title:'Mô hình ổn định',text:`Thu hồi vốn ${paybackMonth} tháng (~${paybackYear} năm) — nằm trong khoảng bình thường của ngành F&B.`,actions:['Giữ chân khách hàng quen','Kiểm soát chi phí nguyên liệu','Tạo combo để tăng giá trị đơn hàng']};}
+  else{advice={type:'orange',icon:'⚠️',title:'Thời gian thu hồi vốn hơi dài',text:`${paybackMonth} tháng (~${paybackYear} năm) — dài hơn trung bình. Cân nhắc giảm chi phí ban đầu hoặc tăng doanh thu.`,actions:['Rà soát lại chi phí đầu tư ban đầu','Tìm cách tăng doanh thu mỗi ngày','Cân nhắc mở quy mô nhỏ hơn']};}
 
+  // Tầng 3: Bảng 72 tháng ẩn vào "Xem thêm"
   const tableRows=projection.map(r=>`
     <tr class="${r.isPayback?'payback-row':''}">
       <td>Tháng ${r.month}${r.isPayback?' 🎉':''}</td>
@@ -1024,49 +997,57 @@ function renderResultA(d){
       <td class="${r.cumulativeProfit>=0?'pos':'neg'}">${fmtVND(r.cumulativeProfit)}</td>
     </tr>`).join('');
   const marginRate=((1-vcRate)*100).toFixed(1);
-
-  // P1+P2 extra KPIs
   const depHtml=totalDepreciation>0?`<div class="srow"><span class="sl">Khấu hao tài sản / tháng</span><span class="sv" style="color:var(--purple)">${fmtVND(totalDepreciation)}</span></div>`:'';
   const loanHtml=loanMonthly>0?`<div class="srow"><span class="sl">Trả nợ vay / tháng</span><span class="sv" style="color:var(--purple)">${fmtVND(loanMonthly)}</span></div>`:'';
 
   document.getElementById('resultA').innerHTML=`
-    <div class="kpi-grid">
-      <div class="kpi-card gold"><div class="kpi-label">Thời gian hoàn vốn</div>
-        <div class="kpi-value gold">${paybackMonth?paybackMonth+' tháng':'Không HV được'}</div>
-        <div class="kpi-sub">${paybackYear?'~'+paybackYear+' năm':'Trong 72 tháng'}</div></div>
-      <div class="kpi-card ${monthlyProfit>=0?'green':'red'}"><div class="kpi-label">Lợi nhuận / tháng</div>
-        <div class="kpi-value ${monthlyProfit>=0?'green':'red'}">${fmtVND(monthlyProfit)}</div>
-        <div class="kpi-sub">${monthlyProfit>=0?'Sau tất cả chi phí':'Đang lỗ vận hành'}</div></div>
-      <div class="kpi-card blue"><div class="kpi-label">BEP – Doanh thu tối thiểu</div>
-        <div class="kpi-value blue">${fmtVND(bepRevMonth)}</div>
-        <div class="kpi-sub">${fmtVND(bepRevMonth/30)}/ngày</div></div>
-      <div class="kpi-card ${parseFloat(marginRate)>=30?'green':'red'}"><div class="kpi-label">Biên lãi gộp</div>
-        <div class="kpi-value ${parseFloat(marginRate)>=30?'green':'red'}">${marginRate}%</div>
-        <div class="kpi-sub">BEP = ${bepOrders.toLocaleString()} đơn/tháng</div></div>
+
+    <!-- TẦNG 2: KẾT QUẢ NỔI BẬT — đọc ngay trong 5 giây -->
+    <div class="result-hero">
+      <div class="result-hero-label">${paybackMonth ? 'Thu hồi vốn sau' : 'Dự báo'}</div>
+      <div class="result-hero-number">${paybackMonth ? paybackMonth : '> 72'}</div>
+      <div class="result-hero-unit">${paybackMonth ? `tháng (~${paybackYear} năm)` : 'tháng — khó thu hồi vốn'}</div>
+      <div class="result-hero-explain">
+        Mỗi tháng lãi khoảng <strong style="color:#f0c060">${fmtVND(Math.abs(monthlyProfit))}</strong>
+        ${monthlyProfit >= 0 ? '— đang có lãi ✓' : '— đang lỗ vận hành ✗'}
+        &nbsp;·&nbsp; Cần bán tối thiểu <strong style="color:#f0c060">${bepOrdersDay} đơn/ngày</strong> để không lỗ
+      </div>
     </div>
 
     <div class="advice ${advice.type}">
       <div class="advice-icon">${advice.icon}</div>
       <div><div class="advice-title">${advice.title}</div>
         <div class="advice-text">${advice.text}</div>
-        <div class="chips">${advice.actions.map(a=>`<span class="chip">👉 ${a}</span>`).join('')}</div></div>
+        <div class="chips">${advice.actions.map(a=>`<span class="chip">👉 ${a}</span>`).join('')}</div>
+      </div>
     </div>
 
+    <!-- KPI phụ -->
+    <div class="kpi-grid">
+      <div class="kpi-card blue"><div class="kpi-label">Doanh thu tối thiểu / tháng</div>
+        <div class="kpi-value blue">${fmtVND(bepRevMonth)}</div>
+        <div class="kpi-sub">${fmtVND(bepRevMonth/30)}/ngày · ${bepOrdersDay} đơn/ngày</div></div>
+      <div class="kpi-card ${parseFloat(marginRate)>=30?'green':'red'}"><div class="kpi-label">Lãi gộp trên mỗi 100đ bán</div>
+        <div class="kpi-value ${parseFloat(marginRate)>=30?'green':'red'}">${marginRate}đ</div>
+        <div class="kpi-sub">Sau khi trừ chi phí nguyên liệu</div></div>
+    </div>
+
+    <!-- Tóm tắt số liệu -->
     <div class="summary-dark">
-      <h3>📋 Tóm tắt thông số</h3>
-      <div class="srow"><span class="sl">Doanh thu / tháng</span><span class="sv">${fmtVND(revMonth)}</span></div>
-      <div class="srow"><span class="sl">Tổng vốn đầu tư ban đầu</span><span class="sv">${fmtVND(totalCapex)}</span></div>
-      <div class="srow"><span class="sl">Chi phí cố định thuần / tháng</span><span class="sv">${fmtVND(totalFC)}</span></div>
+      <h3>📋 Số liệu bạn đã nhập</h3>
+      <div class="srow"><span class="sl">Doanh thu kỳ vọng / tháng</span><span class="sv">${fmtVND(revMonth)}</span></div>
+      <div class="srow"><span class="sl">Tổng tiền bỏ ra ban đầu</span><span class="sv">${fmtVND(totalCapex)}</span></div>
+      <div class="srow"><span class="sl">Chi phí cố định / tháng</span><span class="sv">${fmtVND(totalFC)}</span></div>
       ${depHtml}${loanHtml}
       <div class="srow"><span class="sl">Tổng chi phí điều chỉnh / tháng</span><span class="sv" style="color:#f0c060">${fmtVND(adjustedFC)}</span></div>
-      <div class="srow"><span class="sl">Tỷ lệ biến phí</span><span class="sv">${(vcRate*100).toFixed(1)}%</span></div>
-      <div class="srow"><span class="sl">Tháng dùng cọc (không trả thuê)</span><span class="sv">${rentFreeMonths} tháng</span></div>
+      <div class="srow"><span class="sl">Chi phí nguyên liệu</span><span class="sv">${(vcRate*100).toFixed(1)}% doanh thu</span></div>
+      <div class="srow"><span class="sl">Tháng không trả tiền thuê</span><span class="sv">${rentFreeMonths} tháng đầu</span></div>
     </div>
 
-    <!-- P4: SENSITIVITY ANALYSIS -->
+    <!-- SENSITIVITY -->
     <div class="sensitivity-card">
-      <div class="card-title">🎚️ Phân tích độ nhạy (What-if)</div>
-      <div class="card-desc">Kéo slider để xem doanh thu thay đổi ảnh hưởng thế nào đến lợi nhuận và thời gian hoàn vốn.</div>
+      <div class="card-title">🎚️ Nếu doanh thu thay đổi thì sao?</div>
+      <div style="font-size:13px;color:var(--ink3);margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">Kéo để xem kết quả thay đổi như thế nào</div>
       <div class="slider-wrap">
         <div class="slider-label">
           <span>Doanh thu hàng tháng</span>
@@ -1075,50 +1056,182 @@ function renderResultA(d){
         <input type="range" id="sensSlider" min="50" max="200" value="100" step="5"
           oninput="updateSensitivity(${revMonth},${adjustedFC},${vcRate},${totalCapex},${rentFreeMonths},${getRentTotal('fcList')})">
         <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--ink3);margin-top:4px">
-          <span>−50%</span><span>Kế hoạch</span><span>+100%</span>
+          <span>Giảm 50%</span><span>Như kế hoạch</span><span>Tăng gấp đôi</span>
         </div>
       </div>
       <div class="sensitivity-result" id="sensResult">
         <div class="sens-kpi"><div class="sk-label">Doanh thu</div><div class="sk-val gold" id="sensRev">${fmtVND(revMonth)}</div></div>
-        <div class="sens-kpi"><div class="sk-label">LN / tháng</div><div class="sk-val ${monthlyProfit>=0?'pos':'neg'}" id="sensProfit">${fmtVND(monthlyProfit)}</div></div>
-        <div class="sens-kpi"><div class="sk-label">Hoàn vốn</div><div class="sk-val gold" id="sensPayback">${paybackMonth?paybackMonth+' tháng':'Không HV'}</div></div>
+        <div class="sens-kpi"><div class="sk-label">Lãi / tháng</div><div class="sk-val ${monthlyProfit>=0?'pos':'neg'}" id="sensProfit">${fmtVND(monthlyProfit)}</div></div>
+        <div class="sens-kpi"><div class="sk-label">Thu hồi vốn</div><div class="sk-val gold" id="sensPayback">${paybackMonth?paybackMonth+' tháng':'Khó HV'}</div></div>
       </div>
     </div>
 
-    <div class="card"><div class="card-title">📈 Biểu đồ lợi nhuận lũy kế (72 tháng)</div>
-      <div class="card-desc">Đường giao điểm 0 (vàng đứt) = tháng hoàn vốn.</div>
-      <div class="chart-wrap"><canvas id="chartA"></canvas></div>
-    </div>
-    <div class="card"><div class="card-title">📅 Ước tính lợi nhuận theo năm</div>
-      <div class="table-scroll">
-        <table class="result-table">
-          <thead><tr><th>Năm</th><th>Doanh thu</th><th>CP cố định</th><th>Lợi nhuận</th><th>LN lũy kế</th></tr></thead>
-          <tbody>${yearRows}</tbody>
-        </table>
+    <!-- TẦNG 3: Chi tiết ẩn vào "Xem thêm" -->
+    <button class="see-more-toggle" onclick="toggleSeeMore('seeMoreA',this)">
+      📊 Xem chi tiết: biểu đồ và bảng dòng tiền 72 tháng ▼
+    </button>
+    <div class="see-more-content" id="seeMoreA">
+      <div class="card"><div class="card-title">📈 Biểu đồ lợi nhuận lũy kế (72 tháng)</div>
+        <div style="font-size:12px;color:var(--ink3);margin-bottom:10px">Đường vàng đứt = điểm thu hồi vốn</div>
+        <div class="chart-wrap"><canvas id="chartA"></canvas></div>
       </div>
-    </div>
-    <div class="card"><div class="card-title">🗓️ Bảng dòng tiền chi tiết 72 tháng</div>
-      <div class="card-desc">Cuộn để xem chi tiết. Tháng có 🎉 = tháng hoàn vốn.</div>
-      <div class="table-scroll">
-        <table class="result-table">
-          <thead><tr><th>Tháng</th><th>Doanh thu</th><th>CP biến đổi</th><th>CP cố định</th><th>Lợi nhuận</th><th>LN lũy kế</th></tr></thead>
-          <tbody>${tableRows}</tbody>
-        </table>
+      <div class="card"><div class="card-title">📅 Lợi nhuận theo từng năm</div>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead><tr><th>Năm</th><th>Doanh thu</th><th>Chi phí cố định</th><th>Lợi nhuận</th><th>Lãi/lỗ tích lũy</th></tr></thead>
+            <tbody>${yearRows}</tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card"><div class="card-title">🗓️ Bảng dòng tiền chi tiết 72 tháng</div>
+        <div style="font-size:12px;color:var(--ink3);margin-bottom:8px">Tháng có 🎉 = tháng thu hồi được vốn</div>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead><tr><th>Tháng</th><th>Doanh thu</th><th>Chi phí NL</th><th>Chi phí cố định</th><th>Lợi nhuận</th><th>Lãi/lỗ tích lũy</th></tr></thead>
+            <tbody>${tableRows}</tbody>
+          </table>
+        </div>
       </div>
     </div>`;
 
-  setTimeout(()=>renderChartA(projection),100);
-  // Init slider gradient
+  setTimeout(()=>{
+    if(document.getElementById('seeMoreA')?.classList.contains('open')){
+      renderChartA(projection);
+    }
+  },100);
   updateSliderGradient(document.getElementById('sensSlider'));
 }
 
-// P4: Sensitivity update
+function renderResultB(d){
+  const{bepRevMonth,bepRevDay,bepOrdersMonth,bepOrdersDay,totalFC,vcRate,avgPrice,forecast,forecastProfit}=d;
+  const marginRate=((1-vcRate)*100).toFixed(1);
+
+  let forecastHtml='';
+  if(forecast>0&&forecastProfit!==null){
+    forecastHtml=`
+    <div class="card"><div class="card-title">💡 Nếu đạt doanh thu ${fmtVND(forecast)}/tháng</div>
+      <div class="kpi-grid">
+        <div class="kpi-card ${forecastProfit>=0?'green':'red'}"><div class="kpi-label">Lãi ước tính / tháng</div>
+          <div class="kpi-value ${forecastProfit>=0?'green':'red'}">${fmtVND(forecastProfit)}</div>
+          <div class="kpi-sub">${forecastProfit>=0?'Sau tất cả chi phí':'Vẫn đang lỗ'}</div></div>
+        <div class="kpi-card ${forecast>=bepRevMonth?'green':'red'}"><div class="kpi-label">So với điểm hòa vốn</div>
+          <div class="kpi-value ${forecast>=bepRevMonth?'green':'red'}">${forecast>=bepRevMonth?'+'+fmtVND(forecast-bepRevMonth):fmtVND(forecast-bepRevMonth)}</div>
+          <div class="kpi-sub">${forecast>=bepRevMonth?'Vượt điểm hòa vốn ✓':'Chưa đến điểm hòa vốn ✗'}</div></div>
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('resultB').innerHTML=`
+
+    <!-- TẦNG 2: KẾT QUẢ NỔI BẬT -->
+    <div class="result-hero">
+      <div class="result-hero-label">Mỗi ngày cần bán tối thiểu</div>
+      <div class="result-hero-number">${bepOrdersDay}</div>
+      <div class="result-hero-unit">đơn hàng để không lỗ</div>
+      <div class="result-hero-explain">
+        Tương đương doanh thu <strong style="color:#f0c060">${fmtVND(bepRevDay)}/ngày</strong>
+        &nbsp;·&nbsp; hoặc <strong style="color:#f0c060">${fmtVND(bepRevMonth)}/tháng</strong>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-card blue"><div class="kpi-label">Doanh thu tối thiểu / tháng</div>
+        <div class="kpi-value blue">${fmtVND(bepRevMonth)}</div><div class="kpi-sub">= ${fmtVND(bepRevDay)}/ngày</div></div>
+      <div class="kpi-card gold"><div class="kpi-label">Số đơn tối thiểu / tháng</div>
+        <div class="kpi-value gold">${bepOrdersMonth.toLocaleString()}</div><div class="kpi-sub">= ${bepOrdersDay} đơn/ngày</div></div>
+      <div class="kpi-card green"><div class="kpi-label">Lãi gộp mỗi 100đ bán</div>
+        <div class="kpi-value green">${marginRate}đ</div><div class="kpi-sub">Sau khi trừ chi phí nguyên liệu</div></div>
+      <div class="kpi-card gold"><div class="kpi-label">Chi phí cố định / tháng</div>
+        <div class="kpi-value gold">${fmtVND(totalFC)}</div><div class="kpi-sub">Cần bù qua lãi gộp</div></div>
+    </div>
+
+    ${forecastHtml}
+
+    <!-- Tóm tắt công thức — đơn giản hóa -->
+    <div class="summary-dark">
+      <h3>📐 Tại sao lại ra con số này?</h3>
+      <div class="srow"><span class="sl">Chi phí cố định mỗi tháng</span><span class="sv">${fmtVND(totalFC)}</span></div>
+      <div class="srow"><span class="sl">Cứ thu 100đ thì lãi được</span><span class="sv">${marginRate}đ (sau trừ NL)</span></div>
+      <div class="srow"><span class="sl">→ Cần doanh thu tối thiểu</span><span class="sv" style="color:#f0c060">${fmtVND(bepRevMonth)}</span></div>
+      <div class="stotal"><div><div class="tl">Điểm hòa vốn hàng tháng</div></div><div class="tv">${fmtVND(bepRevMonth)}</div></div>
+    </div>
+
+    <!-- SENSITIVITY -->
+    <div class="sensitivity-card">
+      <div class="card-title">🎚️ Nếu doanh thu thay đổi thì sao?</div>
+      <div style="font-size:13px;color:var(--ink3);margin-bottom:14px;padding-bottom:14px;border-bottom:1px solid var(--border)">Kéo để xem kết quả thay đổi như thế nào</div>
+      <div class="slider-wrap">
+        <div class="slider-label">
+          <span>Doanh thu hàng tháng</span>
+          <span class="slider-val" id="sensRevBLabel">${fmtVND(forecast||bepRevMonth*1.2)}</span>
+        </div>
+        <input type="range" id="sensSliderB" min="50" max="200" value="100" step="5"
+          oninput="updateSensitivityB(${forecast||bepRevMonth*1.2},${totalFC},${vcRate})">
+        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--ink3);margin-top:4px">
+          <span>Giảm 50%</span><span>Như kế hoạch</span><span>Tăng gấp đôi</span>
+        </div>
+      </div>
+      <div class="sensitivity-result" id="sensResultB">
+        <div class="sens-kpi"><div class="sk-label">Doanh thu</div><div class="sk-val gold" id="sensRevB">${fmtVND(forecast||bepRevMonth*1.2)}</div></div>
+        <div class="sens-kpi"><div class="sk-label">Lãi / tháng</div><div class="sk-val ${forecastProfit>=0?'pos':'neg'}" id="sensProfitB">${fmtVND(forecastProfit!==null?forecastProfit:(bepRevMonth*1.2*(1-vcRate)-totalFC))}</div></div>
+        <div class="sens-kpi"><div class="sk-label">vs Hòa vốn</div><div class="sk-val" id="sensBepB">${fmtVND((forecast||bepRevMonth*1.2)-bepRevMonth)}</div></div>
+      </div>
+    </div>
+
+    <!-- TẦNG 3: Chi tiết ẩn -->
+    <button class="see-more-toggle" onclick="toggleSeeMore('seeMoreB',this)">
+      📊 Xem thêm: biểu đồ và phân tích 3 kịch bản ▼
+    </button>
+    <div class="see-more-content" id="seeMoreB">
+      <div class="card"><div class="card-title">📊 Biểu đồ so sánh các kịch bản</div>
+        <div class="chart-wrap"><canvas id="chartB"></canvas></div>
+      </div>
+      <div class="card"><div class="card-title">📋 Phân tích 3 kịch bản</div>
+        <div class="table-scroll">
+          <table class="result-table">
+            <thead><tr><th>Kịch bản</th><th>Doanh thu/tháng</th><th>Lợi nhuận</th><th>So với hòa vốn</th></tr></thead>
+            <tbody>
+              ${[['📉 Bán ít hơn kế hoạch (−30%)',0.7],['📊 Đúng như kế hoạch (×1)',1.0],['📈 Bán tốt hơn kế hoạch (+30%)',1.3]].map(([name,mult])=>{
+                const rev=(forecast||bepRevMonth*1.2)*mult;
+                const prof=rev*(1-vcRate)-totalFC;
+                const diff=rev-bepRevMonth;
+                return`<tr><td>${name}</td><td>${fmtVND(rev)}</td>
+                  <td class="${prof>=0?'pos':'neg'}">${fmtVND(prof)}</td>
+                  <td class="${diff>=0?'pos':'neg'}">${diff>=0?'+':''}${fmtVND(diff)}</td></tr>`;
+              }).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>`;
+
+  updateSliderGradient(document.getElementById('sensSliderB'));
+  setTimeout(()=>{
+    if(document.getElementById('seeMoreB')?.classList.contains('open')){
+      renderChartB(d);
+    }
+  },100);
+}
+
+// Toggle "Xem thêm"
+function toggleSeeMore(id, btn) {
+  const el = document.getElementById(id);
+  const isOpen = el.classList.toggle('open');
+  btn.textContent = isOpen
+    ? btn.textContent.replace('▼','▲').replace('Xem chi tiết:','Ẩn chi tiết:').replace('Xem thêm:','Ẩn:')
+    : btn.textContent.replace('▲','▼').replace('Ẩn chi tiết:','Xem chi tiết:').replace('Ẩn:','Xem thêm:');
+  if (isOpen) {
+    if (id === 'seeMoreA' && STATE.lastResultA) setTimeout(()=>renderChartA(STATE.lastResultA.projection), 100);
+    if (id === 'seeMoreB' && STATE.lastResultB) setTimeout(()=>renderChartB(STATE.lastResultB), 100);
+  }
+}
+
+// ════════ 10. SENSITIVITY (GIỮ NGUYÊN) ════════
 function updateSensitivity(baseRev,adjustedFC,vcRate,totalCapex,rentFreeMonths,rentPerMonth){
   const slider=document.getElementById('sensSlider');
   const pct=parseFloat(slider.value)/100;
   const newRev=baseRev*pct;
   const newProfit=newRev*(1-vcRate)-adjustedFC;
-  // Quick payback calc
   let cum=-totalCapex;let pb=null;
   for(let m=1;m<=72;m++){
     const fc=m<=rentFreeMonths?adjustedFC-rentPerMonth:adjustedFC;
@@ -1135,102 +1248,6 @@ function updateSensitivity(baseRev,adjustedFC,vcRate,totalCapex,rentFreeMonths,r
   pbEl.className='sk-val '+(pb&&pb<=36?'pos':'neg');
   updateSliderGradient(slider);
 }
-function updateSliderGradient(slider){
-  const pct=((slider.value-slider.min)/(slider.max-slider.min))*100;
-  slider.style.background=`linear-gradient(to right,var(--gold) ${pct}%,var(--border) ${pct}%)`;
-}
-
-function renderResultB(d){
-  const{bepRevMonth,bepRevDay,bepOrdersMonth,bepOrdersDay,totalFC,vcRate,avgPrice,forecast,forecastProfit}=d;
-  const marginRate=((1-vcRate)*100).toFixed(1);
-
-  let forecastHtml='';
-  if(forecast>0&&forecastProfit!==null){
-    forecastHtml=`
-    <div class="card"><div class="card-title">💡 Lợi nhuận ước tính</div>
-      <div class="card-desc">Nếu đạt doanh thu ${fmtVND(forecast)}/tháng</div>
-      <div class="kpi-grid">
-        <div class="kpi-card ${forecastProfit>=0?'green':'red'}"><div class="kpi-label">Lợi nhuận ước tính / tháng</div>
-          <div class="kpi-value ${forecastProfit>=0?'green':'red'}">${fmtVND(forecastProfit)}</div>
-          <div class="kpi-sub">${forecastProfit>=0?'Sau tất cả chi phí':'Vẫn đang lỗ'}</div></div>
-        <div class="kpi-card ${forecast>=bepRevMonth?'green':'red'}"><div class="kpi-label">So với điểm hòa vốn</div>
-          <div class="kpi-value ${forecast>=bepRevMonth?'green':'red'}">${forecast>=bepRevMonth?'+'+fmtVND(forecast-bepRevMonth):fmtVND(forecast-bepRevMonth)}</div>
-          <div class="kpi-sub">${forecast>=bepRevMonth?'Vượt BEP ✓':'Chưa đạt BEP ✗'}</div></div>
-      </div>
-    </div>`;
-  }
-
-  document.getElementById('resultB').innerHTML=`
-    <div class="kpi-grid">
-      <div class="kpi-card blue"><div class="kpi-label">BEP Doanh thu / tháng</div>
-        <div class="kpi-value blue">${fmtVND(bepRevMonth)}</div><div class="kpi-sub">= ${fmtVND(bepRevDay)}/ngày</div></div>
-      <div class="kpi-card gold"><div class="kpi-label">BEP Số đơn / tháng</div>
-        <div class="kpi-value gold">${bepOrdersMonth.toLocaleString()}</div><div class="kpi-sub">= ${bepOrdersDay.toLocaleString()} đơn/ngày</div></div>
-      <div class="kpi-card green"><div class="kpi-label">Biên lãi gộp</div>
-        <div class="kpi-value green">${marginRate}%</div><div class="kpi-sub">Lãi ${fmtVND(avgPrice*(1-vcRate))}/đơn</div></div>
-      <div class="kpi-card gold"><div class="kpi-label">CP cố định / tháng</div>
-        <div class="kpi-value gold">${fmtVND(totalFC)}</div><div class="kpi-sub">Phải bù qua lãi gộp</div></div>
-    </div>
-
-    <div class="summary-dark">
-      <h3>📐 Công thức tính</h3>
-      <div class="srow"><span class="sl">Tổng CP cố định (FC)</span><span class="sv">${fmtVND(totalFC)}</span></div>
-      <div class="srow"><span class="sl">Tỷ lệ biến phí (VC%)</span><span class="sv">${(vcRate*100).toFixed(1)}%</span></div>
-      <div class="srow"><span class="sl">Biên lãi gộp (1 – VC%)</span><span class="sv">${marginRate}%</span></div>
-      <div class="srow"><span class="sl">BEP = FC ÷ (1 – VC%)</span><span class="sv">${fmtVND(totalFC)} ÷ ${(1-vcRate).toFixed(2)}</span></div>
-      <div class="stotal"><div><div class="tl">Điểm hòa vốn doanh thu</div></div><div class="tv">${fmtVND(bepRevMonth)}</div></div>
-    </div>
-
-    ${forecastHtml}
-
-    <!-- P4: Sensitivity for Module B -->
-    <div class="sensitivity-card">
-      <div class="card-title">🎚️ Phân tích độ nhạy (What-if)</div>
-      <div class="card-desc">Kéo slider để xem doanh thu thay đổi ảnh hưởng thế nào đến lợi nhuận.</div>
-      <div class="slider-wrap">
-        <div class="slider-label">
-          <span>Doanh thu hàng tháng</span>
-          <span class="slider-val" id="sensRevBLabel">${fmtVND(forecast||bepRevMonth*1.2)}</span>
-        </div>
-        <input type="range" id="sensSliderB" min="50" max="200" value="100" step="5"
-          oninput="updateSensitivityB(${forecast||bepRevMonth*1.2},${totalFC},${vcRate})">
-        <div style="display:flex;justify-content:space-between;font-size:10px;color:var(--ink3);margin-top:4px">
-          <span>−50%</span><span>Kế hoạch</span><span>+100%</span>
-        </div>
-      </div>
-      <div class="sensitivity-result" id="sensResultB">
-        <div class="sens-kpi"><div class="sk-label">Doanh thu</div><div class="sk-val gold" id="sensRevB">${fmtVND(forecast||bepRevMonth*1.2)}</div></div>
-        <div class="sens-kpi"><div class="sk-label">LN / tháng</div><div class="sk-val ${forecastProfit>=0?'pos':'neg'}" id="sensProfitB">${fmtVND(forecastProfit!==null?forecastProfit:(bepRevMonth*1.2*(1-vcRate)-totalFC))}</div></div>
-        <div class="sens-kpi"><div class="sk-label">vs BEP</div><div class="sk-val" id="sensBepB">${fmtVND((forecast||bepRevMonth*1.2)-bepRevMonth)}</div></div>
-      </div>
-    </div>
-
-    <div class="card"><div class="card-title">📊 Biểu đồ phân tích kịch bản</div>
-      <div class="card-desc">So sánh doanh thu dự kiến vs điểm hòa vốn vs các kịch bản.</div>
-      <div class="chart-wrap"><canvas id="chartB"></canvas></div>
-    </div>
-    <div class="card"><div class="card-title">📋 Phân tích 3 kịch bản</div>
-      <div class="table-scroll">
-        <table class="result-table">
-          <thead><tr><th>Kịch bản</th><th>Doanh thu/tháng</th><th>Lợi nhuận</th><th>So BEP</th></tr></thead>
-          <tbody>
-            ${[['📉 Thất thu (–30%)',0.7],['📊 Kế hoạch (×1)',1.0],['📈 Tăng trưởng (+30%)',1.3]].map(([name,mult])=>{
-              const rev=(forecast||bepRevMonth*1.2)*mult;
-              const prof=rev*(1-vcRate)-totalFC;
-              const diff=rev-bepRevMonth;
-              return`<tr><td>${name}</td><td>${fmtVND(rev)}</td>
-                <td class="${prof>=0?'pos':'neg'}">${fmtVND(prof)}</td>
-                <td class="${diff>=0?'pos':'neg'}">${diff>=0?'+':''}${fmtVND(diff)}</td></tr>`;
-            }).join('')}
-          </tbody>
-        </table>
-      </div>
-    </div>`;
-
-  updateSliderGradient(document.getElementById('sensSliderB'));
-  setTimeout(()=>renderChartB(d),100);
-}
-
 function updateSensitivityB(baseRev,totalFC,vcRate){
   const slider=document.getElementById('sensSliderB');
   const pct=parseFloat(slider.value)/100;
@@ -1246,10 +1263,13 @@ function updateSensitivityB(baseRev,totalFC,vcRate){
   bepEl.textContent=(diff>=0?'+':'')+fmtVND(diff);bepEl.className='sk-val '+(diff>=0?'pos':'neg');
   updateSliderGradient(slider);
 }
+function updateSliderGradient(slider){
+  if(!slider)return;
+  const pct=((slider.value-slider.min)/(slider.max-slider.min))*100;
+  slider.style.background=`linear-gradient(to right,var(--gold) ${pct}%,var(--border) ${pct}%)`;
+}
 
-// ════════════════════════════════
-// 10. CHARTS
-// ════════════════════════════════
+// ════════ 11. CHARTS (GIỮ NGUYÊN) ════════
 function renderChartA(projection){
   const ctx=document.getElementById('chartA');
   if(!ctx)return;if(chartA){chartA.destroy();chartA=null;}
@@ -1257,7 +1277,7 @@ function renderChartA(projection){
   const data=projection.map(r=>r.cumulativeProfit);
   chartA=new Chart(ctx,{
     type:'line',
-    data:{labels,datasets:[{label:'LN lũy kế',data,borderColor:'#1565c0',
+    data:{labels,datasets:[{label:'Lãi/lỗ tích lũy',data,borderColor:'#1565c0',
       backgroundColor:(ctx)=>{const g=ctx.chart.ctx.createLinearGradient(0,0,0,220);
         g.addColorStop(0,'rgba(45,122,79,.15)');g.addColorStop(1,'rgba(192,57,43,.05)');return g;},
       fill:true,tension:.3,pointRadius:0,borderWidth:2.5}]},
@@ -1276,7 +1296,7 @@ function renderChartB(d){
   const ctx=document.getElementById('chartB');
   if(!ctx)return;if(chartB){chartB.destroy();chartB=null;}
   const base=d.forecast||d.bepRevMonth*1.5;
-  const scenarios=[{label:'Thất thu (–30%)',rev:base*0.7},{label:'Kế hoạch',rev:base},{label:'Tăng trưởng (+30%)',rev:base*1.3}];
+  const scenarios=[{label:'Bán ít (−30%)',rev:base*0.7},{label:'Kế hoạch',rev:base},{label:'Bán tốt (+30%)',rev:base*1.3}];
   const colors=scenarios.map(s=>s.rev>=d.bepRevMonth?'rgba(45,122,79,.7)':'rgba(192,57,43,.7)');
   chartB=new Chart(ctx,{
     type:'bar',
@@ -1290,46 +1310,39 @@ function renderChartB(d){
   });
 }
 
-// ════════════════════════════════
-// P5: SHARE / EXPORT
-// ════════════════════════════════
+// ════════ 12. SHARE (GIỮ NGUYÊN) ════════
 function shareResult(mod){
   let text='';
   if(mod==='A'&&STATE.lastResultA){
     const d=STATE.lastResultA;
-    text=`📊 KẾT QUẢ TÍNH HÒA VỐN F&B (EZ F&B v2)
+    text=`📊 KẾT QUẢ TÍNH HÒA VỐN F&B
 ━━━━━━━━━━━━━━━━━━━
-💰 Doanh thu kế hoạch: ${fmtVND(d.revMonth)}/tháng
-🏗️ Vốn đầu tư ban đầu: ${fmtVND(d.totalCapex)}
-🏠 Chi phí cố định: ${fmtVND(d.totalFC)}/tháng${d.totalDepreciation>0?'\n📉 Khấu hao tài sản: '+fmtVND(d.totalDepreciation)+'/tháng':''}${d.loanMonthly>0?'\n🏦 Trả nợ vay: '+fmtVND(d.loanMonthly)+'/tháng':''}
-⚙️ Chi phí điều chỉnh: ${fmtVND(d.adjustedFC)}/tháng
+💰 Doanh thu kỳ vọng: ${fmtVND(d.revMonth)}/tháng
+🏗️ Tổng vốn bỏ ra ban đầu: ${fmtVND(d.totalCapex)}
+🏠 Chi phí cố định: ${fmtVND(d.totalFC)}/tháng${d.totalDepreciation>0?'\n📉 Hao mòn tài sản: '+fmtVND(d.totalDepreciation)+'/tháng':''}${d.loanMonthly>0?'\n🏦 Trả nợ vay: '+fmtVND(d.loanMonthly)+'/tháng':''}
 ━━━━━━━━━━━━━━━━━━━
-⏱️ Thời gian hoàn vốn: ${d.paybackMonth?d.paybackMonth+' tháng (~'+d.paybackYear+' năm)':'Không hoàn vốn được trong 72 tháng'}
-💵 Lợi nhuận ước tính: ${fmtVND(d.monthlyProfit)}/tháng
-📐 Điểm hòa vốn BEP: ${fmtVND(d.bepRevMonth)}/tháng
-📊 Biên lãi gộp: ${((1-d.vcRate)*100).toFixed(1)}%
+⏱️ Thu hồi vốn sau: ${d.paybackMonth?d.paybackMonth+' tháng':'Khó thu hồi trong 6 năm'}
+💵 Lãi ước tính: ${fmtVND(d.monthlyProfit)}/tháng
+📐 Doanh thu hòa vốn: ${fmtVND(d.bepRevMonth)}/tháng (${fmtVND(d.bepRevMonth/30)}/ngày)
+🛒 Cần bán tối thiểu: ${d.bepOrdersDay} đơn/ngày
 ━━━━━━━━━━━━━━━━━━━
-Tạo bởi EZ F&B – Công cụ tài chính miễn phí`;
+Tính bởi EZ F&B – Công cụ miễn phí`;
   } else if(mod==='B'&&STATE.lastResultB){
     const d=STATE.lastResultB;
-    text=`📊 KẾT QUẢ ĐIỂM HÒA VỐN F&B (EZ F&B v2)
+    text=`📊 KẾT QUẢ ĐIỂM HÒA VỐN F&B
 ━━━━━━━━━━━━━━━━━━━
 🏠 Chi phí cố định: ${fmtVND(d.totalFC)}/tháng
-⚙️ Tỷ lệ biến phí: ${(d.vcRate*100).toFixed(1)}%
-📊 Biên lãi gộp: ${((1-d.vcRate)*100).toFixed(1)}%
+⚙️ Chi phí nguyên liệu: ${(d.vcRate*100).toFixed(1)}% doanh thu
 ━━━━━━━━━━━━━━━━━━━
-📐 BEP Doanh thu: ${fmtVND(d.bepRevMonth)}/tháng
-📐 BEP Doanh thu: ${fmtVND(d.bepRevDay)}/ngày
-🛒 BEP Số đơn: ${d.bepOrdersMonth.toLocaleString()} đơn/tháng (${d.bepOrdersDay.toLocaleString()} đơn/ngày)
-${d.forecast>0?'💵 Lợi nhuận ước tính: '+fmtVND(d.forecastProfit)+'/tháng\n(Với DT '+fmtVND(d.forecast)+'/tháng)':''}
+🛒 Cần bán tối thiểu: ${d.bepOrdersDay} đơn/ngày
+📐 Doanh thu hòa vốn: ${fmtVND(d.bepRevMonth)}/tháng
+${d.forecast>0?'💵 Lãi ước tính: '+fmtVND(d.forecastProfit)+'/tháng\n(Nếu đạt DT '+fmtVND(d.forecast)+'/tháng)':''}
 ━━━━━━━━━━━━━━━━━━━
-Tạo bởi EZ F&B – Công cụ tài chính miễn phí`;
-  } else {
-    alert('Chưa có kết quả để chia sẻ!');return;
-  }
-  if(navigator.clipboard&&navigator.clipboard.writeText){
+Tính bởi EZ F&B – Công cụ miễn phí`;
+  } else { alert('Chưa có kết quả để chia sẻ!'); return; }
+  if(navigator.clipboard?.writeText){
     navigator.clipboard.writeText(text).then(()=>showToast()).catch(()=>fallbackCopy(text));
-  } else {fallbackCopy(text);}
+  } else { fallbackCopy(text); }
 }
 function fallbackCopy(text){
   const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
@@ -1342,9 +1355,7 @@ function showToast(){
   t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);
 }
 
-// ════════════════════════════════
-// 11. RESET
-// ════════════════════════════════
+// ════════ 13. RESET (GIỮ NGUYÊN) ════════
 function resetAll(){
   if(!confirm('Xóa toàn bộ dữ liệu và bắt đầu lại?'))return;
   STATE.module=null;STATE.stepA=1;STATE.stepB=1;STATE.lastResultA=null;STATE.lastResultB=null;
@@ -1357,7 +1368,8 @@ function resetAll(){
   document.getElementById('aRentFree').value='6';document.getElementById('aVcRate').value='30';
   document.getElementById('aAvgPrice').value='50000';document.getElementById('bVcRate').value='35';
   document.getElementById('bAvgPrice').value='50000';document.getElementById('bForecast').value='';
-  document.getElementById('loanEnabled').checked=false;document.getElementById('loanFields').classList.remove('show');
+  document.getElementById('loanEnabled').checked=false;
+  document.getElementById('loanFields').classList.remove('show');
   document.getElementById('loanAmount').value='';document.getElementById('loanRate').value='8';
   document.getElementById('loanTerm').value='36';document.getElementById('loanResult').style.display='none';
   document.querySelectorAll('.step-tab').forEach(t=>t.classList.remove('active','done'));
@@ -1367,43 +1379,30 @@ function resetAll(){
   seedDefaults();
 }
 
-// ════════════════════════════════
-// P6: PWA — inline manifest + SW
-// ════════════════════════════════
+// ════════ PWA (GIỮ NGUYÊN) ════════
 (function setupPWA(){
-  // Inline manifest via blob URL
   const manifest={
     name:'EZ F&B – Tính Hòa Vốn',short_name:'EZ F&B',
     description:'Công cụ tính hòa vốn cho chủ quán F&B',
     start_url:'.',display:'standalone',
     background_color:'#1a1710',theme_color:'#1a1710',
-    icons:[{src:'https://via.placeholder.com/192x192/1a1710/f0c060?text=EZ',sizes:'192x192',type:'image/png'},
-           {src:'https://via.placeholder.com/512x512/1a1710/f0c060?text=EZ',sizes:'512x512',type:'image/png'}]
+    icons:[{src:'https://via.placeholder.com/192x192/1a1710/f0c060?text=EZ',sizes:'192x192',type:'image/png'}]
   };
   const blob=new Blob([JSON.stringify(manifest)],{type:'application/json'});
   const url=URL.createObjectURL(blob);
   const link=document.createElement('link');link.rel='manifest';link.href=url;
   document.head.appendChild(link);
-
-  // Minimal service worker via blob — offline cache
   if('serviceWorker' in navigator){
-    const swCode=`
-const CACHE='ezfnb-v2';
-const ASSETS=['/'];
+    const swCode=`const CACHE='ezfnb-v2';const ASSETS=['/'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
-self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
-`;
+self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));`;
     const swBlob=new Blob([swCode],{type:'application/javascript'});
     const swUrl=URL.createObjectURL(swBlob);
-    navigator.serviceWorker.register(swUrl,{scope:'./'})
-      .then(()=>console.log('EZ F&B SW registered'))
-      .catch(e=>console.log('SW skipped:',e));
+    navigator.serviceWorker.register(swUrl,{scope:'./'}).then(()=>{}).catch(()=>{});
   }
 })();
 
-// ════════════════════════════════
-// INIT
-// ════════════════════════════════
+// ════════ INIT ════════
 window.addEventListener('DOMContentLoaded',()=>{
   seedDefaults();
   hideAllPanels();
@@ -1411,5 +1410,4 @@ window.addEventListener('DOMContentLoaded',()=>{
 });
 </script>
 </body>
-
 </html>
