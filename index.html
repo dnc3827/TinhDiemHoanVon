@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="EZ F&B">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,700;0,900;1,400&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -27,7 +27,7 @@
 .tooltip-wrap .tooltip-box{position:absolute;bottom:calc(100% + 6px);left:50%;transform:translateX(-50%);background:#1a1710;color:#fff;font-size:11px;line-height:1.5;padding:7px 10px;border-radius:8px;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .2s;z-index:99;font-weight:400;max-width:220px;white-space:normal;text-align:center}
 .tooltip-wrap:hover .tooltip-box{opacity:1}
 .tooltip-wrap .tooltip-box::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:#1a1710}
-body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden}
+body{background:var(--bg);color:var(--ink);font-family:'Be Vietnam Pro',sans-serif;font-size:16px;line-height:1.7;min-height:100vh;overflow-x:hidden}
 
 /* HEADER */
 .app-header{background:var(--ink);color:#fff;padding:28px 20px 22px;text-align:center;position:relative;overflow:hidden}
@@ -38,14 +38,14 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 
 /* MODULE SELECTOR */
 .module-selector{background:var(--ink);padding:0 16px 20px;display:flex;gap:10px}
-.mod-btn{flex:1;padding:12px 8px;border:1.5px solid rgba(255,255,255,.15);border-radius:10px;background:transparent;color:rgba(255,255,255,.5);font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .25s;text-align:center}
+.mod-btn{flex:1;padding:12px 8px;border:1.5px solid rgba(255,255,255,.15);border-radius:10px;background:transparent;color:rgba(255,255,255,.5);font-family:'Be Vietnam Pro',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .25s;text-align:center}
 .mod-btn .mod-icon{display:block;font-size:20px;margin-bottom:4px}
 .mod-btn.active{background:linear-gradient(135deg,rgba(200,146,42,.25),rgba(200,146,42,.1));border-color:rgba(200,146,42,.6);color:#f0c060}
 .mod-btn:hover:not(.active){border-color:rgba(255,255,255,.3);color:#fff}
 
 /* STEPPER */
 .stepper{display:flex;background:#111;border-top:1px solid rgba(255,255,255,.06)}
-.step-tab{flex:1;padding:12px 6px;text-align:center;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.3);font-family:'DM Sans',sans-serif;font-size:11px;font-weight:500;transition:all .25s;border-bottom:3px solid transparent;position:relative}
+.step-tab{flex:1;padding:12px 6px;text-align:center;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.3);font-family:'Be Vietnam Pro',sans-serif;font-size:11px;font-weight:500;transition:all .25s;border-bottom:3px solid transparent;position:relative}
 .step-tab .snum{display:block;font-family:'Fraunces',serif;font-size:18px;font-weight:700;line-height:1;margin-bottom:2px}
 .step-tab.active{color:#f0c060;border-bottom-color:#f0c060}
 .step-tab.done{color:#6dbf8a}
@@ -71,7 +71,7 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 /* FIELDS */
 .field{margin-bottom:13px}
 .field label{display:block;font-size:12px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:5px}
-.field input,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);background:#faf9f7;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.field input,.field select{width:100%;padding:11px 13px;border:1.5px solid var(--border);border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:15px;color:var(--ink);background:#faf9f7;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
 .field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(200,146,42,.1);background:#fff}
 .field .preview{font-size:12px;color:var(--gold);font-weight:600;margin-top:4px;min-height:16px}
 .field .hint{font-size:12px;color:var(--ink3);margin-top:4px;line-height:1.5;background:#faf9f7;padding:6px 10px;border-radius:7px;border-left:3px solid var(--gold-border)}
@@ -82,22 +82,22 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .blist{display:flex;flex-direction:column;gap:8px}
 .brow{display:grid;grid-template-columns:1fr 130px 34px;gap:6px;align-items:center}
 .brow-fc{display:grid;grid-template-columns:1fr 70px 50px 100px 100px 32px 34px;gap:5px;align-items:center}
-.brow-fc input,.brow-fc select{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
+.brow-fc input,.brow-fc select{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
 .brow-fc input:focus,.brow-fc select:focus{border-color:var(--gold);background:#fff}
 .brow-fc input[type=number]{text-align:right}
 .brow-fc input[readonly]{background:#f0f0f0;color:var(--ink3);cursor:default}
 .rent-chk-wrap{display:flex;align-items:center;justify-content:center;height:36px}
 .rent-chk-wrap input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold);cursor:pointer;flex-shrink:0}
-.brow input{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
+.brow input{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
 .brow input:focus{border-color:var(--gold);background:#fff}
 .brow input[type=number]{text-align:right}
 .del-btn{width:34px;height:34px;border:1.5px solid var(--border);border-radius:8px;background:#faf9f7;color:var(--ink3);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;flex-shrink:0}
 .del-btn:hover{background:var(--red-bg);border-color:var(--red);color:var(--red)}
-.add-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px dashed var(--border);border-radius:9px;padding:9px 13px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink3);cursor:pointer;width:100%;margin-top:8px;transition:all .2s}
+.add-btn{display:flex;align-items:center;gap:6px;background:none;border:1.5px dashed var(--border);border-radius:9px;padding:9px 13px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;color:var(--ink3);cursor:pointer;width:100%;margin-top:8px;transition:all .2s}
 .add-btn:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-bg)}
 .sec-total{display:flex;justify-content:space-between;align-items:center;padding:10px 13px;background:var(--gold-bg);border:1px solid var(--gold-border);border-radius:9px;margin-top:10px;font-size:13px;font-weight:600;color:var(--gold)}
 .brow-capex{display:grid;grid-template-columns:1fr 120px 90px 90px 34px;gap:6px;align-items:center}
-.brow-capex input{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'DM Sans',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
+.brow-capex input{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
 .brow-capex input:focus{border-color:var(--gold);background:#fff}
 .brow-capex input[type=number]{text-align:right}
 .brow-capex input[readonly]{background:#f0f0f0;color:var(--ink3);cursor:default;font-size:12px}
@@ -121,15 +121,15 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .btn-primary{width:100%;padding:15px;background:var(--ink);color:#fff;border:none;border-radius:var(--radius);font-family:'Fraunces',serif;font-size:17px;font-weight:700;cursor:pointer;transition:all .2s;margin-top:6px}
 .btn-primary:hover{background:#2e2b22;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,0,0,.15)}
 .btn-row{display:flex;gap:10px;margin-top:6px}
-.btn-back{flex:1;padding:12px;background:var(--surface);color:var(--ink2);border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
+.btn-back{flex:1;padding:12px;background:var(--surface);color:var(--ink2);border:1.5px solid var(--border);border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .2s}
 .btn-back:hover{border-color:var(--ink);background:var(--ink);color:#fff}
 .btn-next{flex:2;padding:12px;background:var(--ink);color:#fff;border:none;border-radius:10px;font-family:'Fraunces',serif;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s}
 .btn-next:hover{background:#2e2b22}
-.btn-print{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .2s;margin-top:8px}
+.btn-print{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);font-family:'Be Vietnam Pro',sans-serif;font-size:14px;font-weight:500;color:var(--ink2);cursor:pointer;transition:all .2s;margin-top:8px}
 .btn-print:hover{border-color:var(--ink);color:var(--ink)}
-.btn-reset{padding:11px 16px;background:var(--surface);color:var(--red);border:1.5px solid var(--red-border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s}
+.btn-reset{padding:11px 16px;background:var(--surface);color:var(--red);border:1.5px solid var(--red-border);border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s}
 .btn-reset:hover{background:var(--red-bg)}
-.btn-share{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:var(--green-bg);border:1.5px solid var(--green-border);border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;color:var(--green);cursor:pointer;transition:all .2s;margin-top:8px}
+.btn-share{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;background:var(--green-bg);border:1.5px solid var(--green-border);border-radius:var(--radius);font-family:'Be Vietnam Pro',sans-serif;font-size:14px;font-weight:600;color:var(--green);cursor:pointer;transition:all .2s;margin-top:8px}
 .btn-share:hover{background:var(--green);color:#fff;border-color:var(--green)}
 .share-toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a1710;color:#fff;padding:10px 20px;border-radius:100px;font-size:13px;font-weight:500;opacity:0;transition:all .3s;pointer-events:none;z-index:999;white-space:nowrap}
 .share-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -186,7 +186,7 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',sans-serif;font
 .table-scroll .result-table th{position:sticky;top:0;background:#fff;z-index:1}
 
 /* XEM THÊM toggle */
-.see-more-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);cursor:pointer;transition:all .2s;margin-bottom:12px}
+.see-more-toggle{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;background:var(--surface);border:1.5px solid var(--border);border-radius:10px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;font-weight:500;color:var(--ink3);cursor:pointer;transition:all .2s;margin-bottom:12px}
 .see-more-toggle:hover{border-color:var(--gold);color:var(--gold)}
 .see-more-content{display:none}
 .see-more-content.open{display:block}
@@ -331,10 +331,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         Ví dụ: quán café nhỏ thường thu 3–8 triệu/ngày tuỳ vị trí và quy mô.
       </div>
       <div class="field">
-        <label>Doanh thu trung bình mỗi ngày</label>
-        <input type="number" id="aRevDay" min="0" placeholder="VD: 3800000" oninput="onRevDay()">
+        <label>Một ngày bán hàng, quán bạn thu được khoảng bao nhiêu tiền?</label>
+        <input type="number" id="aRevDay" min="0" placeholder="VD: 3000000 (tức 3 triệu/ngày)" oninput="onRevDay()">
         <div class="preview" id="aRevDayPrev"></div>
-        <div class="hint">💡 Tổng tiền thu được trong 1 ngày bán hàng bình thường</div>
+        <div class="hint">💡 Tính tổng tiền khách trả trong 1 ngày bình thường — không tính ngày đặc biệt hay lễ tết</div>
       </div>
       <div class="field">
         <label>Hoặc nhập thẳng doanh thu mỗi tháng</label>
@@ -352,6 +352,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <div class="field">
         <label>Bao nhiêu tháng không phải trả tiền thuê?</label>
         <select id="aRentFree">
+          <option value="-1">Không thuê — mở tại nhà hoặc không có tiền cọc</option>
           <option value="0">Trả thuê ngay từ tháng 1</option>
           <option value="3">3 tháng (cọc 3 tháng)</option>
           <option value="6" selected>6 tháng (cọc 6 tháng — phổ biến nhất)</option>
@@ -359,7 +360,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         </select>
       </div>
     </div>
-    <button class="btn-primary" onclick="goStepA(2)">Tiếp theo → Vốn bỏ ra ban đầu</button>
+    <div class="btn-row">
+      <button class="btn-back" onclick="selectModule(null)">← Chọn lại giai đoạn</button>
+      <button class="btn-next" onclick="goStepA(2)">Tiếp → Vốn bỏ ra ban đầu</button>
+    </div>
   </div>
 
   <!-- A2: VỐN ĐẦU TƯ -->
@@ -367,11 +371,11 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
     <div class="card">
       <div class="card-title">🏗️ Bạn phải bỏ ra bao nhiêu tiền để mở quán?</div>
       <div class="hint-box">
-        <strong>Liệt kê tất cả khoản tiền bỏ ra trước khi bán hàng ngày đầu tiên.</strong>
-        Cột <em>"Dùng được bao lâu"</em> để app tính chi phí hao mòn hàng tháng — ví dụ máy pha cà phê mua 30 triệu, dùng 5 năm (60 tháng) thì mỗi tháng tính 500.000đ vào chi phí.
+        <strong>Liệt kê tất cả tiền bỏ ra trước ngày mở quán.</strong>
+        Ví dụ: mua máy pha cà phê 30 triệu, dùng được 5 năm → nhập <strong>60 tháng</strong> → app tự tính ra mỗi tháng tốn 500.000đ.
       </div>
       <div class="brow-capex-header">
-        <span>Khoản chi</span><span>Số tiền (đ)</span><span>Dùng được (tháng)</span><span>Tính ra/tháng</span><span></span>
+        <span>Tên khoản chi</span><span>Số tiền</span><span>Dùng được bao lâu (tháng)</span><span>Mỗi tháng tốn</span><span></span>
       </div>
       <div class="blist" id="capexList"></div>
       <button class="add-btn" onclick="addCapexRow()">＋ Thêm khoản chi</button>
@@ -439,8 +443,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       </div>
       <div class="brow-fc-header">
         <span style="text-align:left">Tên chi phí</span>
-        <span>Đ.vị</span><span>SL</span><span>Đơn giá</span><span>Thành tiền</span>
-        <span><span class="tooltip-wrap">🏠 Thuê MB<span class="tooltip-box">Tick nếu đây là tiền thuê mặt bằng — sẽ được miễn trong giai đoạn dùng tiền cọc</span></span></span>
+        <span>Đơn vị</span><span>Số lượng</span><span>Đơn giá</span><span>Tổng tiền</span>
+        <span><span class="tooltip-wrap">🏠 Thuê MB<span class="tooltip-box">Tick vào đây nếu đây là tiền thuê mặt bằng</span></span></span>
         <span></span>
       </div>
       <div class="blist" id="fcList"></div>
@@ -479,10 +483,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <div class="hint">💡 Ý nghĩa: cứ thu 100đ thì tốn <span id="aVcHint">30</span>đ cho nguyên liệu, còn lại <span id="aMarginHint">70</span>đ là lãi gộp</div>
       </div>
       <div class="field">
-        <label>Mỗi khách vào quán trả trung bình bao nhiêu?</label>
+        <label>Giá trung bình 1 lần mua của khách là bao nhiêu?</label>
         <input type="number" id="aAvgPrice" min="0" placeholder="VD: 50000" value="50000" oninput="previewNum('aAvgPrice','aAvgPricePrev')">
         <div class="preview" id="aAvgPricePrev">50.000đ</div>
-        <div class="hint">💡 Ví dụ: 10 khách vào, thu được 500.000đ → nhập 50.000. App dùng con số này để tính "mỗi ngày cần bao nhiêu khách"</div>
+        <div class="hint">💡 Ví dụ: khách thường mua 1 ly cà phê 35.000đ + 1 bánh 15.000đ → nhập 50.000. Đây là số tiền trung bình mỗi lần khách ghé quán.</div>
       </div>
     </div>
     <div class="btn-row">
@@ -504,15 +508,19 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <button class="btn-reset" onclick="resetAll()">🔄 Làm lại</button>
     </div>
     <button class="btn-share" onclick="shareResult('A')">📋 Copy tóm tắt để gửi Zalo / Messenger</button>
-    <button class="btn-print" onclick="window.print()">🖨️ In / Lưu PDF</button>
+    <button class="btn-back" onclick="selectModule(null)" style="margin-top:8px">← Quay lại trang chính</button>
   </div>
 
   <!-- ══════ MODULE B ══════ -->
 
   <!-- B1: CHI PHÍ CỐ ĐỊNH -->
   <div class="panel" id="panelB1">
-    <div id="bReuseBox" class="info-note" style="display:none">
-      💡 Bạn đã nhập chi phí ở Module A. <strong><span id="bReuseBtn" onclick="reuseFromA()" style="cursor:pointer;text-decoration:underline">Nhấn để dùng lại</span></strong> hoặc nhập mới bên dưới.
+    <div id="bReuseBox" style="display:none;background:var(--green-bg);border:1px solid var(--green-border);border-radius:10px;padding:12px 14px;margin-bottom:14px;font-size:13px;color:var(--green)">
+      ✅ Bạn đã nhập chi phí ở bước trước.
+      <button onclick="reuseFromA()" style="margin-left:8px;background:var(--green);color:#fff;border:none;border-radius:8px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Be Vietnam Pro',sans-serif">
+        Dùng lại danh sách đó →
+      </button>
+      <span style="color:var(--ink3);font-size:12px;display:block;margin-top:4px">Hoặc tự nhập mới bên dưới nếu muốn</span>
     </div>
     <div class="card">
       <div class="card-title">🏠 Chi phí phải trả mỗi tháng dù bán nhiều hay ít</div>
@@ -522,8 +530,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       </div>
       <div class="brow-fc-header">
         <span style="text-align:left">Tên chi phí</span>
-        <span>Đ.vị</span><span>SL</span><span>Đơn giá</span><span>Thành tiền</span>
-        <span><span class="tooltip-wrap">🏠 Thuê MB<span class="tooltip-box">Tick nếu đây là tiền thuê mặt bằng</span></span></span>
+        <span>Đơn vị</span><span>Số lượng</span><span>Đơn giá</span><span>Tổng tiền</span>
+        <span><span class="tooltip-wrap">🏠 Thuê MB<span class="tooltip-box">Tick vào đây nếu đây là tiền thuê mặt bằng</span></span></span>
         <span></span>
       </div>
       <div class="blist" id="fcListB"></div>
@@ -561,7 +569,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <div class="hint">💡 Cứ thu 100đ thì tốn <span id="bVcHint">35</span>đ cho nguyên liệu</div>
       </div>
       <div class="field">
-        <label>Mỗi khách vào quán trả trung bình bao nhiêu?</label>
+        <label>Giá trung bình 1 lần mua của khách là bao nhiêu?</label>
         <input type="number" id="bAvgPrice" min="0" placeholder="VD: 50000" value="50000" oninput="previewNum('bAvgPrice','bAvgPricePrev')">
         <div class="preview" id="bAvgPricePrev">50.000đ</div>
         <div class="hint">💡 Ví dụ: bán ly cà phê 35.000đ, bánh 15.000đ → trung bình 50.000đ/khách</div>
@@ -593,7 +601,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
       <button class="btn-reset" onclick="resetAll()">🔄 Làm lại</button>
     </div>
     <button class="btn-share" onclick="shareResult('B')">📋 Copy tóm tắt để gửi Zalo / Messenger</button>
-    <button class="btn-print" onclick="window.print()">🖨️ In / Lưu PDF</button>
+    <button class="btn-back" onclick="selectModule(null)" style="margin-top:8px">← Quay lại trang chính</button>
   </div>
 
 </div>
@@ -750,7 +758,7 @@ function addCapexRow(name='',amt='',depMonths=60){
   const depPerMonth=amt&&depMonths&&parseFloat(depMonths)>0?Math.round(parseFloat(amt)/parseFloat(depMonths)):0;
   div.innerHTML=`
     <input type="text" placeholder="VD: Máy pha cà phê, bàn ghế..." value="${name}">
-    <input type="number" class="cap-amt" placeholder="VD: 30000000" min="0" value="${amt}" oninput="updateCapexTotal()" title="Nhập số tiền (đồng). VD: 30 triệu = 30000000">
+    <input type="number" class="cap-amt" placeholder="VD: 30000000 (30 triệu)" min="0" value="${amt}" oninput="updateCapexTotal()" title="Nhập số tiền (đồng). VD: 30 triệu = 30000000">
     <input type="number" class="cap-dep" placeholder="VD: 60" min="1" value="${depMonths}" oninput="updateCapexTotal()">
     <input type="text" class="cap-dep-pm" placeholder="Tự tính" readonly value="${depPerMonth>0?fmtReadonly(depPerMonth):''}" style="text-align:center;font-size:12px">
     <button class="del-btn" onclick="this.closest('.brow-capex').remove();updateCapexTotal()">×</button>`;
@@ -909,7 +917,8 @@ function calculateA(){
   const totalDepreciation=sumDepreciation();
   const loanMonthly=getLoanMonthly();
   const rentPerMonth=getRentTotal('fcList');
-  const rentFreeMonths=parseInt(document.getElementById('aRentFree').value)||6;
+  const rentFreeRaw=parseInt(document.getElementById('aRentFree').value);
+  const rentFreeMonths=rentFreeRaw===-1?999:rentFreeRaw||0;
   const adjustedFC=totalFC+totalDepreciation+loanMonthly;
   const projection=calcProjection({revMonth,vcRate,totalCapex,adjustedFC,totalFC,rentPerMonth,rentFreeMonths,totalDepreciation,loanMonthly},72);
   const paybackIdx=projection.findIndex(r=>r.cumulativeProfit>=0);
@@ -997,19 +1006,31 @@ function renderResultA(d){
       <td class="${r.cumulativeProfit>=0?'pos':'neg'}">${fmtVND(r.cumulativeProfit)}</td>
     </tr>`).join('');
   const marginRate=((1-vcRate)*100).toFixed(1);
-  const depHtml=totalDepreciation>0?`<div class="srow"><span class="sl">Khấu hao tài sản / tháng</span><span class="sv" style="color:var(--purple)">${fmtVND(totalDepreciation)}</span></div>`:'';
+  const depHtml=totalDepreciation>0?`<div class="srow"><span class="sl">Hao mòn máy móc &amp; đồ dùng / tháng</span><span class="sv" style="color:var(--purple)">${fmtVND(totalDepreciation)}</span></div>`:''; 
   const loanHtml=loanMonthly>0?`<div class="srow"><span class="sl">Trả nợ vay / tháng</span><span class="sv" style="color:var(--purple)">${fmtVND(loanMonthly)}</span></div>`:'';
 
   document.getElementById('resultA').innerHTML=`
 
     <!-- TẦNG 2: KẾT QUẢ NỔI BẬT — đọc ngay trong 5 giây -->
     <div class="result-hero">
+      <!-- Nhắc lại số user đã nhập -->
+      <div style="font-size:11px;color:rgba(255,255,255,.35);margin-bottom:12px;background:rgba(255,255,255,.06);padding:6px 14px;border-radius:100px;display:inline-block">
+        Dựa trên doanh thu bạn kỳ vọng: <strong style="color:rgba(255,255,255,.7)">${fmtVND(revMonth)}/tháng</strong>
+      </div>
       <div class="result-hero-label">${paybackMonth ? 'Thu hồi vốn sau' : 'Dự báo'}</div>
       <div class="result-hero-number">${paybackMonth ? paybackMonth : '> 72'}</div>
       <div class="result-hero-unit">${paybackMonth ? `tháng (~${paybackYear} năm)` : 'tháng — khó thu hồi vốn'}</div>
+      <!-- Chuỗi logic giải thích tại sao ra con số đó -->
+      <div style="margin:12px 0 8px;font-size:12px;color:rgba(255,255,255,.4);line-height:1.8">
+        ${fmtVND(revMonth)} doanh thu
+        − ${fmtVND(revMonth*vcRate)} nguyên liệu
+        − ${fmtVND(adjustedFC)} chi phí
+        = <strong style="color:#f0c060">${fmtVND(monthlyProfit)} lãi/tháng</strong>
+      </div>
       <div class="result-hero-explain">
-        Mỗi tháng lãi khoảng <strong style="color:#f0c060">${fmtVND(Math.abs(monthlyProfit))}</strong>
-        ${monthlyProfit >= 0 ? '— đang có lãi ✓' : '— đang lỗ vận hành ✗'}
+        ${monthlyProfit >= 0
+          ? `Lãi <strong style="color:#f0c060">${fmtVND(monthlyProfit)}/tháng</strong> × ${paybackMonth} tháng = đủ bù vốn ${fmtVND(totalCapex)} ✓`
+          : '⚠️ Doanh thu chưa đủ bù chi phí — đang lỗ vận hành'}
         &nbsp;·&nbsp; Cần bán tối thiểu <strong style="color:#f0c060">${bepOrdersDay} đơn/ngày</strong> để không lỗ
       </div>
     </div>
@@ -1022,26 +1043,18 @@ function renderResultA(d){
       </div>
     </div>
 
-    <!-- KPI phụ -->
-    <div class="kpi-grid">
-      <div class="kpi-card blue"><div class="kpi-label">Doanh thu tối thiểu / tháng</div>
-        <div class="kpi-value blue">${fmtVND(bepRevMonth)}</div>
-        <div class="kpi-sub">${fmtVND(bepRevMonth/30)}/ngày · ${bepOrdersDay} đơn/ngày</div></div>
-      <div class="kpi-card ${parseFloat(marginRate)>=30?'green':'red'}"><div class="kpi-label">Lãi gộp trên mỗi 100đ bán</div>
-        <div class="kpi-value ${parseFloat(marginRate)>=30?'green':'red'}">${marginRate}đ</div>
-        <div class="kpi-sub">Sau khi trừ chi phí nguyên liệu</div></div>
-    </div>
+
 
     <!-- Tóm tắt số liệu -->
     <div class="summary-dark">
       <h3>📋 Số liệu bạn đã nhập</h3>
       <div class="srow"><span class="sl">Doanh thu kỳ vọng / tháng</span><span class="sv">${fmtVND(revMonth)}</span></div>
-      <div class="srow"><span class="sl">Tổng tiền bỏ ra ban đầu</span><span class="sv">${fmtVND(totalCapex)}</span></div>
-      <div class="srow"><span class="sl">Chi phí cố định / tháng</span><span class="sv">${fmtVND(totalFC)}</span></div>
+      <div class="srow"><span class="sl">Tổng vốn bỏ ra để mở quán</span><span class="sv" style="color:#f0c060;font-size:16px">${fmtVND(totalCapex)}</span></div>
+      <div class="srow"><span class="sl">Chi phí cố định mỗi tháng</span><span class="sv">${fmtVND(totalFC)}</span></div>
       ${depHtml}${loanHtml}
-      <div class="srow"><span class="sl">Tổng chi phí điều chỉnh / tháng</span><span class="sv" style="color:#f0c060">${fmtVND(adjustedFC)}</span></div>
-      <div class="srow"><span class="sl">Chi phí nguyên liệu</span><span class="sv">${(vcRate*100).toFixed(1)}% doanh thu</span></div>
-      <div class="srow"><span class="sl">Tháng không trả tiền thuê</span><span class="sv">${rentFreeMonths} tháng đầu</span></div>
+      <div class="srow"><span class="sl">Tổng chi phí phải trả mỗi tháng</span><span class="sv" style="color:#f0c060">${fmtVND(adjustedFC)}</span></div>
+      <div class="srow"><span class="sl">Tiền nguyên liệu chiếm</span><span class="sv">${(vcRate*100).toFixed(1)}% doanh thu</span></div>
+      <div class="srow"><span class="sl">Tiền thuê mặt bằng</span><span class="sv">${rentFreeMonths===999?'Không có (mở tại nhà)':rentFreeMonths===0?'Trả ngay từ tháng 1':rentFreeMonths+' tháng đầu miễn phí'}</span></div>
     </div>
 
     <!-- SENSITIVITY -->
@@ -1134,16 +1147,7 @@ function renderResultB(d){
       </div>
     </div>
 
-    <div class="kpi-grid">
-      <div class="kpi-card blue"><div class="kpi-label">Doanh thu tối thiểu / tháng</div>
-        <div class="kpi-value blue">${fmtVND(bepRevMonth)}</div><div class="kpi-sub">= ${fmtVND(bepRevDay)}/ngày</div></div>
-      <div class="kpi-card gold"><div class="kpi-label">Số đơn tối thiểu / tháng</div>
-        <div class="kpi-value gold">${bepOrdersMonth.toLocaleString()}</div><div class="kpi-sub">= ${bepOrdersDay} đơn/ngày</div></div>
-      <div class="kpi-card green"><div class="kpi-label">Lãi gộp mỗi 100đ bán</div>
-        <div class="kpi-value green">${marginRate}đ</div><div class="kpi-sub">Sau khi trừ chi phí nguyên liệu</div></div>
-      <div class="kpi-card gold"><div class="kpi-label">Chi phí cố định / tháng</div>
-        <div class="kpi-value gold">${fmtVND(totalFC)}</div><div class="kpi-sub">Cần bù qua lãi gộp</div></div>
-    </div>
+
 
     ${forecastHtml}
 
@@ -1151,7 +1155,8 @@ function renderResultB(d){
     <div class="summary-dark">
       <h3>📐 Tại sao lại ra con số này?</h3>
       <div class="srow"><span class="sl">Chi phí cố định mỗi tháng</span><span class="sv">${fmtVND(totalFC)}</span></div>
-      <div class="srow"><span class="sl">Cứ thu 100đ thì lãi được</span><span class="sv">${marginRate}đ (sau trừ NL)</span></div>
+      <div class="srow"><span class="sl">Mỗi 100đ doanh thu: NL chiếm ${(vcRate*100).toFixed(0)}đ, còn lại</span><span class="sv">${marginRate}đ</span></div>
+      <div class="srow" style="font-size:11px;opacity:.6"><span class="sl">→ Ví dụ thu 10 triệu: tốn ${fmtVND(10000000*vcRate)} NL, còn ${fmtVND(10000000*(1-vcRate))}</span><span class="sv"></span></div>
       <div class="srow"><span class="sl">→ Cần doanh thu tối thiểu</span><span class="sv" style="color:#f0c060">${fmtVND(bepRevMonth)}</span></div>
       <div class="stotal"><div><div class="tl">Điểm hòa vốn hàng tháng</div></div><div class="tv">${fmtVND(bepRevMonth)}</div></div>
     </div>
