@@ -82,6 +82,9 @@ body{background:var(--bg);color:var(--ink);font-family:'Be Vietnam Pro',sans-ser
 .blist{display:flex;flex-direction:column;gap:8px}
 .brow{display:grid;grid-template-columns:1fr 130px 34px;gap:6px;align-items:center}
 .brow-fc{display:grid;grid-template-columns:1fr 70px 50px 100px 100px 32px 34px;gap:5px;align-items:center}
+/* Ẩn mobile-only fc elements trên desktop */
+.fc-card-name{display:none}
+.fc-mobile-fields{display:none}
 .brow-fc input,.brow-fc select{padding:9px 10px;border:1.5px solid var(--border);border-radius:9px;font-family:'Be Vietnam Pro',sans-serif;font-size:13px;color:var(--ink);background:#faf9f7;outline:none;width:100%;transition:border-color .2s}
 .brow-fc input:focus,.brow-fc select:focus{border-color:var(--gold);background:#fff}
 .brow-fc input[type=number]{text-align:right}
@@ -104,6 +107,21 @@ body{background:var(--bg);color:var(--ink);font-family:'Be Vietnam Pro',sans-ser
 .brow-capex-header{display:grid;grid-template-columns:1fr 120px 90px 90px 34px;gap:6px;padding:0 0 4px;margin-bottom:2px;border-bottom:1px solid var(--border)}
 .brow-capex-header span{font-size:10px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;padding:0 4px;text-align:right}
 .brow-capex-header span:first-child{text-align:left}
+/* Ẩn mobile-only elements trên desktop */
+.brow-capex-del{display:none}
+.brow-capex-fields{display:none}
+.brow-capex-field{display:contents}
+.brow-capex-field label{display:none}
+.cap-amt-preview{display:none}
+.capex-name-input{display:none}
+.capex-name-desktop{display:block}
+/* FC mobile elements ẩn trên desktop */
+.fc-mobile-row{display:none}
+.fc-mobile-bottom{display:none}
+.fc-card-del{display:none}
+.fc-card-name{display:none}
+.fc-mobile-fields{display:none}
+.fc-mobile-rent{display:none}
 .brow-fc-header{display:grid;grid-template-columns:1fr 70px 50px 100px 100px 32px 34px;gap:5px;padding:0 0 4px;margin-bottom:2px;border-bottom:1px solid var(--border)}
 .brow-fc-header span{font-size:10px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:.5px;padding:0 4px;text-align:center}
 .brow-fc-header span:first-child{text-align:left}
@@ -235,18 +253,260 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .sens-kpi .sk-val.gold{color:var(--gold)}
 
 @media(max-width:600px){
-  .brow-capex{grid-template-columns:1fr 100px 80px 80px 34px}
-  .brow-fc{grid-template-columns:1fr 55px 40px 80px 80px 28px 30px}
-  .brow-fc-header{grid-template-columns:1fr 55px 40px 80px 80px 28px 30px}
-  .brow-fc-header span{font-size:9px}
+  /* MOBILE: capex → card dọc */
+  .brow-capex{
+    display:block;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px 14px 12px;
+    margin-bottom:10px;
+    position:relative;
+  }
+  .brow-capex-header{display:none !important}
+  /* Nút xóa mobile */
+  .brow-capex-del{
+    display:flex !important;
+    position:absolute;top:12px;right:12px;
+    width:28px;height:28px;
+    border:1px solid var(--border);border-radius:7px;
+    background:#faf9f7;color:var(--ink3);font-size:14px;
+    cursor:pointer;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .brow-capex-del:hover{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+  /* Input tên — full width */
+  .capex-name-input{
+    display:block !important;
+    width:calc(100% - 40px) !important;
+    border:1.5px solid var(--border);
+    border-radius:9px;padding:9px 12px;
+    font-family:'Be Vietnam Pro',sans-serif;
+    font-size:14px;font-weight:600;color:var(--ink);
+    background:#faf9f7;outline:none;
+    margin-bottom:10px;
+    transition:border-color .2s;
+  }
+  .capex-name-input:focus{border-color:var(--gold);background:#fff;}
+  /* Ẩn desktop-only elements trên mobile */
+  .capex-name-desktop{display:none !important}
+  .brow-capex > .cap-amt:not(.cap-amt-m){display:none !important}
+  .brow-capex > .cap-dep:not(.cap-dep-m){display:none !important}
+  .brow-capex > .cap-dep-pm:not(.cap-dep-pm-m){display:none !important}
+  .brow-capex > .del-btn{display:none !important}
+  /* 3 field con — grid đều nhau */
+  .brow-capex-fields{
+    display:grid !important;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:8px;
+    align-items:start;
+  }
+  .brow-capex-field{display:block !important}
+  .brow-capex-field label{
+    display:block !important;
+    font-size:10px;font-weight:700;
+    color:var(--ink3);text-transform:uppercase;
+    letter-spacing:.5px;margin-bottom:5px;
+  }
+  /* Các input trong field đều cao bằng nhau */
+  .brow-capex-field input{
+    width:100% !important;
+    height:42px !important;
+    padding:0 10px !important;
+    border:1.5px solid var(--border);
+    border-radius:9px;
+    font-family:'Be Vietnam Pro',sans-serif;
+    font-size:13px;color:var(--ink);
+    background:#faf9f7;outline:none;
+    text-align:right;
+    transition:border-color .2s;
+    box-sizing:border-box;
+  }
+  .brow-capex-field input:focus{border-color:var(--gold);background:#fff;}
+  .brow-capex-field input[readonly]{
+    background:#f0ede5;color:var(--gold);
+    font-weight:700;font-size:13px;
+  }
+  .cap-amt-preview{
+    display:block !important;
+    font-size:11px;color:var(--gold);
+    font-weight:600;margin-top:4px;
+    text-align:right;min-height:16px;
+  }
+  /* del-btn gốc ẩn trên mobile */
+  .brow-capex .del-btn{display:none !important}
+
+  /* ── FC TABLE MOBILE: card dọc ── */
+  .brow-fc{
+    display:block;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px 14px 12px;
+    margin-bottom:10px;
+    position:relative;
+  }
+  .brow-fc-header{display:none !important}
+  /* Ẩn desktop grid items — chỉ ẩn direct children không phải mobile */
+  .brow-fc > .fc-name-desktop,
+  .brow-fc > .fc-unit,
+  .brow-fc > .fc-qty,
+  .brow-fc > .fc-price,
+  .brow-fc > .fc-total,
+  .brow-fc > .rent-chk-wrap,
+  .brow-fc > .del-btn{display:none !important}
+  /* Hiện mobile elements */
+  .fc-card-name{
+    display:block !important;
+    width:calc(100% - 40px);
+    border:1.5px solid var(--border);
+    border-radius:9px;padding:9px 12px;
+    font-family:'Be Vietnam Pro',sans-serif;
+    font-size:14px;font-weight:600;color:var(--ink);
+    background:#faf9f7;outline:none;
+    margin-bottom:10px;
+    transition:border-color .2s;
+  }
+  .fc-card-name:focus{border-color:var(--gold);background:#fff;}
+  .fc-card-del{
+    display:flex !important;
+    position:absolute;top:12px;right:12px;
+    width:28px;height:28px;
+    border:1px solid var(--border);border-radius:7px;
+    background:#faf9f7;color:var(--ink3);font-size:14px;
+    cursor:pointer;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .fc-card-del:hover{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+  .fc-mobile-fields{
+    display:grid !important;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+  }
+  .fc-mobile-field{display:block}
+  .fc-mobile-field label{
+    font-size:10px;font-weight:700;
+    color:var(--ink3);text-transform:uppercase;
+    letter-spacing:.5px;display:block;margin-bottom:5px;
+  }
+  .fc-mobile-field input,
+  .fc-mobile-field select{
+    width:100%;height:42px;
+    padding:0 10px;
+    border:1.5px solid var(--border);border-radius:9px;
+    font-family:'Be Vietnam Pro',sans-serif;
+    font-size:13px;color:var(--ink);
+    background:#faf9f7;outline:none;
+    text-align:right;box-sizing:border-box;
+    transition:border-color .2s;
+    -webkit-appearance:none;
+  }
+  .fc-mobile-field input:focus,
+  .fc-mobile-field select:focus{border-color:var(--gold);background:#fff;}
+  .fc-mobile-field input[readonly]{
+    background:#f0ede5;color:var(--gold);font-weight:700;
+  }
+  /* Hàng checkbox thuê MB */
+  .fc-mobile-rent{
+    display:flex !important;
+    align-items:center;gap:8px;
+    padding:8px 0 4px;
+    font-size:13px;color:var(--ink2);
+  }
+  .fc-mobile-rent input[type=checkbox]{
+    width:18px;height:18px;
+    accent-color:var(--gold);cursor:pointer;
+    flex-shrink:0;
+  }
   .kpi-grid{grid-template-columns:1fr 1fr}
   .kpi-value{font-size:18px}
   .sensitivity-result{grid-template-columns:1fr 1fr}
+
+  /* ── FC MOBILE CARD LAYOUT ── */
+  .brow-fc-header{display:none !important}
+  .brow-fc{
+    display:block !important;
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px 14px 12px;
+    margin-bottom:10px;
+    position:relative;
+  }
+  /* desktop items already hidden above */
+  /* Nút xóa mobile */
+  .fc-card-del{
+    display:flex !important;
+    position:absolute;top:12px;right:12px;
+    width:28px;height:28px;
+    border:1px solid var(--border);border-radius:7px;
+    background:#faf9f7;color:var(--ink3);font-size:14px;
+    cursor:pointer;align-items:center;justify-content:center;
+    transition:all .2s;
+  }
+  .fc-card-del:hover{background:var(--red-bg);border-color:var(--red);color:var(--red)}
+  /* Input tên — full width */
+  .fc-card-name{
+    display:block !important;
+    width:calc(100% - 40px) !important;
+    border:1.5px solid var(--border);
+    border-radius:9px;padding:9px 12px;
+    font-family:'Be Vietnam Pro',sans-serif;
+    font-size:14px;font-weight:600;color:var(--ink);
+    background:#faf9f7;outline:none;
+    margin-bottom:10px;
+    box-sizing:border-box;
+    transition:border-color .2s;
+  }
+  .fc-card-name:focus{border-color:var(--gold);background:#fff;}
+  /* Grid 4 ô đều nhau — 2x2 */
+  .fc-mobile-fields{
+    display:grid !important;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+    margin-bottom:8px;
+    align-items:start;
+  }
+  .fc-mobile-field{display:block !important}
+  .fc-mobile-field label{
+    display:block !important;
+    font-size:10px;font-weight:700;
+    color:var(--ink3);text-transform:uppercase;
+    letter-spacing:.5px;margin-bottom:5px;
+  }
+  .fc-mobile-field input,
+  .fc-mobile-field select{
+    width:100% !important;
+    height:42px !important;
+    padding:0 10px !important;
+    border:1.5px solid var(--border);
+    border-radius:9px;
+    font-family:'Be Vietnam Pro',sans-serif;
+    font-size:13px;color:var(--ink);
+    background:#faf9f7;outline:none;
+    box-sizing:border-box;
+    -webkit-appearance:none;
+    transition:border-color .2s;
+  }
+  .fc-mobile-field input[type=number]{text-align:right;}
+  .fc-mobile-field input[readonly]{background:#f0f0f0;color:var(--ink3);}
+  .fc-mobile-field input:focus,
+  .fc-mobile-field select:focus{border-color:var(--gold);background:#fff;}
+  /* Checkbox thuê mặt bằng */
+  .fc-mobile-rent{
+    display:flex !important;
+    align-items:center;gap:8px;
+    padding:6px 0 2px;
+    font-size:13px;color:var(--ink2);
+  }
+  .fc-mobile-rent input[type=checkbox]{
+    width:18px;height:18px;
+    accent-color:var(--gold);cursor:pointer;flex-shrink:0;
+  }
 }
 @media(max-width:400px){
-  .brow-capex{grid-template-columns:1fr 90px 70px 70px 30px}
-  .brow-fc{grid-template-columns:1fr 45px 36px 70px 70px 26px 28px}
-  .brow-fc-header{grid-template-columns:1fr 45px 36px 70px 70px 26px 28px}
+  .brow-capex-fields{grid-template-columns:1fr 1fr !important}
+  .fc-mobile-fields{grid-template-columns:1fr 1fr !important}
 }
 @media print{
   .app-header .header-badge,.module-selector,.stepper,.progress-wrap,.btn-row,.btn-primary,.btn-print,.btn-share,.btn-reset,.add-btn,.del-btn,.sensitivity-card,.see-more-toggle{display:none!important}
@@ -374,9 +634,7 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
         <strong>Liệt kê tất cả tiền bỏ ra trước ngày mở quán.</strong>
         Ví dụ: mua máy pha cà phê 30 triệu, dùng được 5 năm → nhập <strong>60 tháng</strong> → app tự tính ra mỗi tháng tốn 500.000đ.
       </div>
-      <div class="brow-capex-header">
-        <span>Tên khoản chi</span><span>Số tiền</span><span>Dùng được bao lâu (tháng)</span><span>Mỗi tháng tốn</span><span></span>
-      </div>
+
       <div class="blist" id="capexList"></div>
       <button class="add-btn" onclick="addCapexRow()">＋ Thêm khoản chi</button>
       <div style="font-size:11px;color:var(--ink3);margin-top:8px;padding:6px 10px;background:#faf9f7;border-radius:7px;line-height:1.6">
@@ -664,12 +922,13 @@ function getRentTotal(listId){
   },0);
 }
 function sumCapex(){
-  return [...document.querySelectorAll('#capexList .cap-amt')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
+  // Lấy cap-amt desktop (không phải mobile duplicate)
+  return [...document.querySelectorAll('#capexList .brow-capex .cap-amt:not(.cap-amt-m)')].reduce((s,el)=>s+(parseFloat(el.value)||0),0);
 }
 function sumDepreciation(){
   return [...document.querySelectorAll('#capexList .brow-capex')].reduce((s,row)=>{
-    const amt=parseFloat(row.querySelector('.cap-amt')?.value)||0;
-    const months=parseFloat(row.querySelector('.cap-dep')?.value)||0;
+    const amt=parseFloat(row.querySelector('.cap-amt:not(.cap-amt-m)')?.value)||0;
+    const months=parseFloat(row.querySelector('.cap-dep:not(.cap-dep-m)')?.value)||0;
     return months>0?s+(amt/months):s;
   },0);
 }
@@ -685,7 +944,10 @@ function calcFcRow(el){
   const row=el.closest('.brow-fc');
   const qty=parseFloat(row.querySelector('.fc-qty')?.value)||0;
   const price=parseFloat(row.querySelector('.fc-price')?.value)||0;
-  row.querySelector('.fc-total').value=qty*price||'';
+  const total=qty*price||'';
+  row.querySelector('.fc-total').value=total;
+  const mTotal=row.querySelector('.fc-total-m');
+  if(mTotal)mTotal.value=total;
   updateFcTotal('fcList','fcTotal');
   updateFcTotal('fcListB','fcTotalB');
 }
@@ -757,25 +1019,61 @@ function addCapexRow(name='',amt='',depMonths=60){
   const div=document.createElement('div');div.className='brow-capex';
   const depPerMonth=amt&&depMonths&&parseFloat(depMonths)>0?Math.round(parseFloat(amt)/parseFloat(depMonths)):0;
   div.innerHTML=`
-    <input type="text" placeholder="VD: Máy pha cà phê, bàn ghế..." value="${name}">
-    <input type="number" class="cap-amt" placeholder="VD: 30000000 (30 triệu)" min="0" value="${amt}" oninput="updateCapexTotal()" title="Nhập số tiền (đồng). VD: 30 triệu = 30000000">
+    <button class="brow-capex-del" onclick="this.closest('.brow-capex').remove();updateCapexTotal()">×</button>
+    <input type="text" class="capex-name-input" placeholder="Tên khoản chi — VD: Mua máy pha cà phê..." value="${name}">
+    <input type="text" class="capex-name-desktop" placeholder="VD: Máy pha cà phê, bàn ghế..." value="${name}">
+    <input type="number" class="cap-amt" placeholder="VD: 30000000" min="0" value="${amt}" oninput="updateCapexTotal()">
     <input type="number" class="cap-dep" placeholder="VD: 60" min="1" value="${depMonths}" oninput="updateCapexTotal()">
-    <input type="text" class="cap-dep-pm" placeholder="Tự tính" readonly value="${depPerMonth>0?fmtReadonly(depPerMonth):''}" style="text-align:center;font-size:12px">
-    <button class="del-btn" onclick="this.closest('.brow-capex').remove();updateCapexTotal()">×</button>`;
+    <input type="text" class="cap-dep-pm" placeholder="Tự tính" readonly value="${depPerMonth>0?fmtReadonly(depPerMonth):''}">
+    <button class="del-btn" onclick="this.closest('.brow-capex').remove();updateCapexTotal()">×</button>
+    <div class="brow-capex-fields">
+      <div class="brow-capex-field">
+        <label>Số tiền bỏ ra</label>
+        <input type="number" class="cap-amt-m" placeholder="VD: 30000000" min="0" value="${amt}">
+        <div class="cap-amt-preview">${amt?fmtReadonly(parseFloat(amt)):''}</div>
+      </div>
+      <div class="brow-capex-field">
+        <label>Dùng được (tháng)</label>
+        <input type="number" class="cap-dep-m" placeholder="VD: 60" min="1" value="${depMonths}">
+      </div>
+      <div class="brow-capex-field">
+        <label>Mỗi tháng tốn</label>
+        <input type="text" class="cap-dep-pm-m" readonly value="${depPerMonth>0?fmtReadonly(depPerMonth):''}">
+      </div>
+    </div>`;
   list.appendChild(div);
   const row=div;
-  row.querySelector('.cap-amt').addEventListener('input',()=>{
-    const a=parseFloat(row.querySelector('.cap-amt').value)||0;
-    const d=parseFloat(row.querySelector('.cap-dep').value)||0;
-    row.querySelector('.cap-dep-pm').value=d>0?Math.round(a/d):'';
+  const syncInputs=(src,targets)=>targets.forEach(t=>{const el=row.querySelector(t);if(el&&el!==src)el.value=src.value;});
+  const updateRow=(src)=>{
+    // Sync giữa desktop và mobile inputs
+    if(src?.classList.contains('cap-amt')||src?.classList.contains('cap-amt-m')){
+      syncInputs(src,['.cap-amt','.cap-amt-m']);
+    }
+    if(src?.classList.contains('cap-dep')||src?.classList.contains('cap-dep-m')){
+      syncInputs(src,['.cap-dep','.cap-dep-m']);
+    }
+    if(src?.classList.contains('capex-name-desktop')||src?.classList.contains('capex-name-input')){
+      syncInputs(src,['.capex-name-desktop','.capex-name-input']);
+    }
+    const a=parseFloat(row.querySelector('.cap-amt')?.value||row.querySelector('.cap-amt-m')?.value)||0;
+    const d=parseFloat(row.querySelector('.cap-dep')?.value||row.querySelector('.cap-dep-m')?.value)||0;
+    const pm=d>0?Math.round(a/d):0;
+    const pmVal=pm>0?fmtReadonly(pm):'';
+    ['.cap-dep-pm','.cap-dep-pm-m'].forEach(s=>{const el=row.querySelector(s);if(el)el.value=pmVal;});
+    const preview=row.querySelector('.cap-amt-preview');
+    if(preview)preview.textContent=a>0?fmtReadonly(a):'';
     updateCapexTotal();
+  };
+  ['.cap-amt','.cap-amt-m','.cap-dep','.cap-dep-m','.capex-name-desktop','.capex-name-input'].forEach(sel=>{
+    const el=row.querySelector(sel);
+    if(el)el.addEventListener('input',()=>updateRow(el));
   });
-  row.querySelector('.cap-dep').addEventListener('input',()=>{
-    const a=parseFloat(row.querySelector('.cap-amt').value)||0;
-    const d=parseFloat(row.querySelector('.cap-dep').value)||0;
-    row.querySelector('.cap-dep-pm').value=d>0?Math.round(a/d):'';
-    updateCapexTotal();
-  });
+  // Focus style cho input tên
+  const nameInput=row.querySelector('input[type=text]:not(.cap-dep-pm)');
+  if(nameInput){
+    nameInput.addEventListener('focus',()=>{nameInput.style.borderColor='var(--gold)';nameInput.style.background='#fff';});
+    nameInput.addEventListener('blur',()=>{nameInput.style.borderColor='var(--border)';nameInput.style.background='#faf9f7';});
+  }
   if(amt)updateCapexTotal();
 }
 
@@ -784,7 +1082,8 @@ function addFcRow(listId='fcList',name='',unit='Tháng',qty=1,price='',total='',
   const div=document.createElement('div');div.className='brow-fc';
   const totalId=listId==='fcList'?'fcTotal':'fcTotalB';
   div.innerHTML=`
-    <input type="text" placeholder="VD: Thuê mặt bằng, lương NV..." value="${name}">
+    <!-- DESKTOP: grid items -->
+    <input type="text" class="fc-name-desktop" placeholder="VD: Thuê mặt bằng, lương NV..." value="${name}">
     <select class="fc-unit">
       <option ${unit==='Tháng'?'selected':''}>Tháng</option>
       <option ${unit==='Người'?'selected':''}>Người</option>
@@ -796,9 +1095,77 @@ function addFcRow(listId='fcList',name='',unit='Tháng',qty=1,price='',total='',
     <div class="rent-chk-wrap">
       <input type="checkbox" class="rent-flag" ${isRent?'checked':''} title="Tiền thuê mặt bằng">
     </div>
-    <button class="del-btn" onclick="this.closest('.brow-fc').remove();updateFcTotal('${listId}','${totalId}')">×</button>`;
+    <button class="del-btn" onclick="this.closest('.brow-fc').remove();updateFcTotal('${listId}','${totalId}')">×</button>
+    <!-- MOBILE: card layout -->
+    <button class="fc-card-del" onclick="this.closest('.brow-fc').remove();updateFcTotal('${listId}','${totalId}')">×</button>
+    <input type="text" class="fc-card-name" placeholder="Tên chi phí — VD: Thuê mặt bằng..." value="${name}">
+    <div class="fc-mobile-fields">
+      <div class="fc-mobile-field">
+        <label>Đơn vị</label>
+        <select class="fc-unit-m">
+          <option ${unit==='Tháng'?'selected':''}>Tháng</option>
+          <option ${unit==='Người'?'selected':''}>Người</option>
+          <option ${unit==='Ca'?'selected':''}>Ca</option>
+        </select>
+      </div>
+      <div class="fc-mobile-field">
+        <label>Số lượng</label>
+        <input type="number" class="fc-qty-m" min="0" value="${qty}">
+      </div>
+      <div class="fc-mobile-field">
+        <label>Đơn giá</label>
+        <input type="number" class="fc-price-m" min="0" placeholder="Nhập giá" value="${price}">
+      </div>
+      <div class="fc-mobile-field">
+        <label>Tổng tiền</label>
+        <input type="number" class="fc-total-m" readonly value="${total}">
+      </div>
+    </div>
+    <div class="fc-mobile-rent">
+      <input type="checkbox" class="rent-flag-m" ${isRent?'checked':''}>
+      <span>🏠 Đây là tiền thuê mặt bằng</span>
+    </div>`;
   list.appendChild(div);
+  // Sync mobile ↔ desktop
+  const syncFc=()=>{
+    // Sync tên
+    const nameD=div.querySelector('.fc-name-desktop');
+    const nameM=div.querySelector('.fc-card-name');
+    nameD?.addEventListener('input',()=>{if(nameM)nameM.value=nameD.value;});
+    nameM?.addEventListener('input',()=>{if(nameD)nameD.value=nameM.value;});
+    // Sync unit
+    const unitD=div.querySelector('.fc-unit');
+    const unitM=div.querySelector('.fc-unit-m');
+    unitD?.addEventListener('change',()=>{if(unitM)unitM.value=unitD.value;calcFcRowMobile(div,listId,totalId);});
+    unitM?.addEventListener('change',()=>{if(unitD)unitD.value=unitM.value;calcFcRowMobile(div,listId,totalId);});
+    // Sync qty
+    const qtyD=div.querySelector('.fc-qty');
+    const qtyM=div.querySelector('.fc-qty-m');
+    qtyD?.addEventListener('input',()=>{if(qtyM)qtyM.value=qtyD.value;});
+    qtyM?.addEventListener('input',()=>{if(qtyD)qtyD.value=qtyM.value;calcFcRowMobile(div,listId,totalId);});
+    // Sync price
+    const priceD=div.querySelector('.fc-price');
+    const priceM=div.querySelector('.fc-price-m');
+    priceD?.addEventListener('input',()=>{if(priceM)priceM.value=priceD.value;});
+    priceM?.addEventListener('input',()=>{if(priceD)priceD.value=priceM.value;calcFcRowMobile(div,listId,totalId);});
+    // Sync rent
+    const rentD=div.querySelector('.rent-flag');
+    const rentM=div.querySelector('.rent-flag-m');
+    rentD?.addEventListener('change',()=>{if(rentM)rentM.checked=rentD.checked;});
+    rentM?.addEventListener('change',()=>{if(rentD)rentD.checked=rentM.checked;});
+  };
+  syncFc();
   if(total)updateFcTotal(listId,totalId);
+}
+function calcFcRowMobile(div,listId,totalId){
+  const qty=parseFloat(div.querySelector('.fc-qty-m')?.value)||0;
+  const price=parseFloat(div.querySelector('.fc-price-m')?.value)||0;
+  const t=qty*price||0;
+  const totalM=div.querySelector('.fc-total-m');
+  const totalD=div.querySelector('.fc-total');
+  if(totalM)totalM.value=t||'';
+  if(totalD)totalD.value=t||'';
+  updateFcTotal(listId,totalId);
 }
 function addFcRowB(name='',unit='Tháng',qty=1,price='',total='',isRent=false){
   addFcRow('fcListB',name,unit,qty,price,total,isRent);
